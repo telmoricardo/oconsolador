@@ -61,11 +61,11 @@ class SliderDAO extends Conn
     }
 
     //seleciona o campo e o valor
-    public function findUser($field, $value) {
+    public function findSlider($field, $value) {
         try {
-            $userModel = new User();
-            $userModel::ReadByField($field, $value);
-            return $userModel::getResult();
+            $sliderModel = new Slider();
+            $sliderModel::ReadByField($field, $value);
+            return $sliderModel::getResult();
         } catch (PDOException $e) {
             if ($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
@@ -94,9 +94,9 @@ class SliderDAO extends Conn
     //excluir usuário
     public function Excluir($cod_pk, $id) {
         try {
-            $userModel = new User();
-            $userModel::Delele($cod_pk, $id);
-            return $userModel::getResult();
+            $sliderModel = new Slider();
+            $sliderModel::Delele($cod_pk, $id);
+            return $sliderModel::getResult();
         } catch (PDOException $e) {
             if ($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";

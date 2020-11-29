@@ -18,6 +18,7 @@
 $sliderController = new \App\Controller\SliderController();
 $upload = new \App\Helper\Upload();
 
+
 $resultado = "";
 
 $btnEnviar = filter_input(INPUT_POST, 'btnEnviar', FILTER_SANITIZE_STRING);

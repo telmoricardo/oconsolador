@@ -13,6 +13,7 @@ class SliderController
         $this->sliderDAO = new SliderDAO();
     }
 
+    //create slider
     public function Cadastrar($data){
         $this->data = $data;
 
@@ -30,5 +31,15 @@ class SliderController
     //QUANTIDADE DE USUARIOS - METODO AUXILIAR PARA FAZER PAGINAÇÃO DE RESULTADOS
     public function countSliders() {
         return $this->sliderDAO->countSliders();
+    }
+
+    //RETORNO DADOS
+    public function findSlider($field, $value) {
+        return $this->sliderDAO->findSlider($field, $value);
+    }
+
+    //Excluir slider
+    public function Excluir($cod_pk, $id) {
+        return $this->sliderDAO->Excluir($cod_pk, $id);
     }
 }

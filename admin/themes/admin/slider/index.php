@@ -3,24 +3,31 @@
  use App\Helper\Helper;
 
  $sliderController = new \App\Controller\SliderController();
+$BaseDir = null;
 
 /** Pegando o cod que esta vindo através da url del * */
 $deletar = filter_input(INPUT_GET, "del", FILTER_SANITIZE_NUMBER_INT);
 if ($deletar):
+    $slider = $sliderController->findSlider("id", $deletar);
 
-    if ($userController->Excluir("id", $deletar)):
-        echo '<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
-                alert ("Usuário removido com sucesso!")
+    $capa = "../upload/" .$slider->thumb;
+    if (file_exists($capa) && !is_dir($capa)):
+        unlink($capa);
+        if ($sliderController->Excluir("id", $deletar)):
+            echo '<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+                alert ("Slider removido com sucesso!")
                 </SCRIPT>';
-        $insertGoTo = HOME . "/user/index";
-        header("refresh:2;url={$insertGoTo}");
-    else:
-        echo '<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+            $insertGoTo = HOME . "/slider/index";
+            header("refresh:2;url={$insertGoTo}");
+        else:
+            echo '<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
                 alert ("Error ao remover o usuario!")
             </SCRIPT>';
-        $insertGoTo = HOME . "/user/index";
-        header("refresh:2;url={$insertGoTo}");
+            $insertGoTo = HOME . "/slider/index";
+            header("refresh:2;url={$insertGoTo}");
+        endif;
     endif;
+
 
 endif;
 
@@ -102,8 +109,8 @@ endif;
                             <td><?= ($slider->size) == 'p'? 'Pequeno' : 'Grande' ?></td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="<?= HOME; ?>/user/update&id=<?= $slider->id; ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                    <a href="<?= HOME; ?>/user/index&del=<?= $slider->id; ?>" onclick="return confirm('Deseja realmente excluir <?= $slider->title; ?>');" title="Excluir" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="<?= HOME; ?>/slider/update&id=<?= $slider->id; ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="<?= HOME; ?>/slider/index&del=<?= $slider->id; ?>" onclick="return confirm('Deseja realmente excluir <?= $slider->title; ?>');" title="Excluir" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                 </div>
 
                             </td>
