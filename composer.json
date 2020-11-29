@@ -1,0 +1,14 @@
+{
+    "name": "telmoricardo/consolador",
+    "description": "Consolador - site consolador",
+    "autoload":{
+        "psr-4": {            
+            "App\\Classes\\": "App/Classes", 
+            "App\\Controller\\": "App/Controller", 
+            "App\\Interfaces\\": "App/Interfaces", 
+            "App\\DAO\\": "App/DAO",
+            "App\\Helper\\": "App/Helper", 
+            "App\\Model\\": "App/Model"           
+        }
+    }
+}

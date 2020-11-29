@@ -1,0 +1,13 @@
+{
+  "name": "owl.carousel",
+  "version": "2.3.4",
+  "main": [
+    "<?= INCLUDE_PATH; ?>/assets/owl.carousel.js",
+    "<?= INCLUDE_PATH; ?>/assets/assets/owl.carousel.css",
+    "<?= INCLUDE_PATH; ?>/assets/assets/owl.theme.default.css"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "jquery": ">= 1.8.3"
+  }
+}
