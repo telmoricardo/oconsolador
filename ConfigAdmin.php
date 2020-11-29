@@ -25,8 +25,8 @@ if (ENVIRONMENT == 'development') {
 
     // CONFIGRAÇÕES DO BANCO ####################
     define('HOST', '127.0.0.1');
-    define('USER', 'telmoricardo');
-    define('PASS', '9478vmtr');
+    define('USER', 'root');
+    define('PASS', '');
     define('DBSA', 'consolador');
 } else {
     //PRODUÇÃO

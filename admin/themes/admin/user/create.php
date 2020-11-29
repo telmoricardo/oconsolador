@@ -29,7 +29,7 @@ if ($btnEnviar):
         'password' => password_hash(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING), CRYPT_BLOWFISH, ['cost' => 12]),
         'level' => filter_input(INPUT_POST, 'level', FILTER_SANITIZE_NUMBER_INT),
         'genre' => filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_NUMBER_INT),
-        'status' => filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT),
+        'user_status' => filter_input(INPUT_POST, 'user_status', FILTER_SANITIZE_NUMBER_INT),
         'registration' => $registration
     );
 
@@ -76,13 +76,13 @@ endif;
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Telefone:<span></span></label>
-                                <input type="text"  id="telephone" name="telephone" class="form-control" placeholder="(55) 5555.5555" />
+                                <input type="text"  id="telephone" name="telephone" class="form-control" placeholder="(99) 9999-9999" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Celular:<span></span></label>
-                                <input type="text" id="cell" name="cell" class="form-control" placeholder="(55) 55555.5555" />
+                                <input type="text" id="cell" name="cell" class="form-control" placeholder="(99) 99999-9999" />
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -129,7 +129,7 @@ endif;
                         </div>
                         <div class="col-md-3">
                             <label>Status: <span id="rsStatus">&nbsp;</span></label>
-                            <select class="form-control" id="status" name="status">
+                            <select class="form-control" id="user_status" name="user_status">
                                 <option selected disabled value="">Status:</option>
                                 <option value="1">Ativo</option>
                                 <option value="2">Bloqueado</option>

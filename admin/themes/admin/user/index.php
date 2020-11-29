@@ -1,3 +1,20 @@
+<?php
+ use App\Controller\UserController;
+ use App\Helper\Helper;
+
+ $userController = new UserController();
+ $helper = new Helper();
+
+ //máximo de links na paginação
+ $maxlinks = 4;
+ $pagina = (isset($_GET['pagina'])) ? ($_GET['pagina']) : 1;
+ //quantidade de publicação por páginas
+ $maximo = 10;
+ $inicio = (($maximo * $pagina) - $maximo);
+
+ //listando as marcas
+ $listUsers = $userController->allUser($inicio, $maximo);
+?>
 <section class="content-header">
     <div class="container-fluid">
     <div class="row mb-2">
@@ -39,26 +56,32 @@
                 </div>                
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
+                        <?php
+                            //$pkCount = (is_array($listUsers) ? count($listUsers) : 0);
+                            if ($listUsers == null):
+                                echo '<div style="width: 96%; margin: 0 2%; margin-top: 10px;" class="trigger trigger-error">Não possui registros no momento</div>';
+                            else:
+                        ?>
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>User</th>
+                            <th>Usuário</th>
+                            <th>E-mail</th>
                             <th>Data</th>
                             <th>Status</th>
-                            <th>Reason</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
-                            for ($i = 1; $i <= 10; $i++) :
+                            foreach ($listUsers as $user):
                         ?>
                         <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            <td><?= $user->id ?></td>
+                            <td><?= $user->name ?> <?= $user->lastname ?></td>
+                            <td><?= $user->email ?></td>
+                            <td><?= $helper->converteDataHora($user->registration)  ?></td>
+                            <td><?= ($user->user_status) == 1 ? 'Ativo' : 'Bloqueado' ?></td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
@@ -67,21 +90,49 @@
                             </td>
                         </tr>
                         <?php
-                            endfor;
+                            endforeach;
                         ?>                   
                         </tbody>
+                            <?php
+                                endif;
+                            ?>
                     </table>
                 </div>
 
-                <div class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                    </ul>
-                </div>            
+<!--                <div class="card-footer clearfix">-->
+<!--                    <ul class="pagination pagination-sm m-0 float-right">-->
+<!--                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>-->
+<!--                        <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--                        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+
+                <?php
+                //paginação de resultados
+                $total = $userController->countUsers();
+                $total_paginas = ceil($total / $maximo);
+                if ($total > $maximo):
+                    echo '<div class="card-footer clearfix">';
+                    echo '<ul class="pagination pagination-sm m-0 float-right">';
+                    echo '<li class="page-item"><a class="page-link" href="index&pagina=1">Primeira Página</a></li>';
+                    for ($i = $pagina - $maxlinks; $i <= $pagina - 1; $i++):
+                        if ($i >= 1):
+                            echo '<li class="page-item"><a class="page-link" href="index&pagina=' . $i . '">' . $i . '</a><li>';
+                        endif;
+                    endfor;
+                    echo '<li class="active"><a class="page-link" href="index&pagina=' . $pagina . '">' . $pagina . '</a></li>';
+                    for ($i = $pagina + 1; $i <= $pagina + $maxlinks; $i++):
+                        if ($i <= $total_paginas):
+                            echo '<li class="page-item"><a class="page-link" href="index&pagina=' . $i . '">' . $i . '</a></li>';
+                        endif;
+                    endfor;
+                    echo '<li class="page-item"><a  class="page-link" href="index&pagina=' . $total_paginas . '"">Última Página</a></li>';
+                    echo '</ul>';
+                    echo '</div>';
+                endif;
+                ?>
             </div>
 
         </div>

@@ -30,4 +30,13 @@ class UserController
 
     }
 
+    //listar usuários com limite
+    public function allUser($inicio = null, $quantidade = null) {
+        return $this->userDAO->allUser($inicio, $quantidade);
+    }
+    //QUANTIDADE DE USUARIOS - METODO AUXILIAR PARA FAZER PAGINAÇÃO DE RESULTADOS
+    public function countUsers() {
+        return $this->userDAO->countUsers();
+    }
+
 }

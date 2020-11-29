@@ -1,4 +1,4 @@
-<?php require_once './config.php'; ?>
+<?php require_once 'config.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,7 +13,7 @@
         <meta name="author" content="Junio Santos">
         <meta name="author" content="Telmo Ricardo">
         <meta name="" content="/ms-icon-150x150.png">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
+<!--        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">-->
         <link href="<?= INCLUDE_PATH; ?>/assets/css/template.css" rel="stylesheet" type="text/css" />
         <link href="<?= INCLUDE_PATH; ?>/assets/css/media.css" rel="stylesheet" type="text/css" />
         <link href="<?= INCLUDE_PATH; ?>/assets/css/jcarousel.responsive.css" rel="stylesheet" type="text/css" />
@@ -183,14 +183,14 @@
 
         <!-- --------------------------------- conteudo ---------------------------- -->
         <?php
-        $Url[1] = (empty($Url[1]) ? null : $Url[1]);
-        if (file_exists(REQUIRE_PATH . '/' . $Url[0] . '.php')):
-            require REQUIRE_PATH . '/' . $Url[0] . '.php';
-        elseif (file_exists(REQUIRE_PATH . '/' . $Url[0] . '/' . $Url[1] . '.php')):
-            require REQUIRE_PATH . '/' . $Url[0] . '/' . $Url[1] . '.php';
-        else:
-            require REQUIRE_PATH . '/404.php';
-        endif;
+            $Url[1] = (empty($Url[1]) ? null : $Url[1]);
+            if (file_exists(REQUIRE_PATH . '/' . $Url[0] . '.php')):
+                require REQUIRE_PATH . '/' . $Url[0] . '.php';
+            elseif (file_exists(REQUIRE_PATH . '/' . $Url[0] . '/' . $Url[1] . '.php')):
+                require REQUIRE_PATH . '/' . $Url[0] . '/' . $Url[1] . '.php';
+            else:
+                require REQUIRE_PATH . '/404.php';
+            endif;
         ?>
         <!-- --------------------------------- conteudo ---------------------------- -->
         <!--RODAPE-->
