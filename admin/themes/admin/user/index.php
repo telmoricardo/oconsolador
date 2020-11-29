@@ -5,6 +5,26 @@
  $userController = new UserController();
  $helper = new Helper();
 
+/** Pegando o cod que esta vindo através da url del * */
+$deletar = filter_input(INPUT_GET, "del", FILTER_SANITIZE_NUMBER_INT);
+if ($deletar):
+
+    if ($userController->Excluir("id", $deletar)):
+        echo '<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+                alert ("Usuário removido com sucesso!")
+                </SCRIPT>';
+        $insertGoTo = HOME . "/user/index";
+        header("refresh:2;url={$insertGoTo}");
+    else:
+        echo '<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+                alert ("Error ao remover o usuario!")
+            </SCRIPT>';
+        $insertGoTo = HOME . "/user/index";
+        header("refresh:2;url={$insertGoTo}");
+    endif;
+
+endif;
+
  //máximo de links na paginação
  $maxlinks = 4;
  $pagina = (isset($_GET['pagina'])) ? ($_GET['pagina']) : 1;

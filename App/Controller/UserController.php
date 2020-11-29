@@ -54,4 +54,9 @@ class UserController
             return false;
         endif;
     }
+
+    //Excluir usuario
+    public function Excluir($cod_pk, $id) {
+        return $this->userDAO->Excluir($cod_pk, $id);
+    }
 }

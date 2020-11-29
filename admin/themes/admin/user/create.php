@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-            <h1>Usuário</h1>
+            <h1></h1>
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -16,6 +16,7 @@
 </section>
 <?php
 $userController = new \App\Controller\UserController();
+$resultado = "";
 $btnEnviar = filter_input(INPUT_POST, 'btnEnviar', FILTER_SANITIZE_STRING);
 if ($btnEnviar):
     $registration = date("Y-m-d H:i:s");
@@ -29,25 +30,36 @@ if ($btnEnviar):
         'password' => password_hash(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING), CRYPT_BLOWFISH, ['cost' => 12]),
         'level' => filter_input(INPUT_POST, 'level', FILTER_SANITIZE_NUMBER_INT),
         'genre' => filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_NUMBER_INT),
-        'user_status' => filter_input(INPUT_POST, 'user_status', FILTER_SANITIZE_NUMBER_INT),
+        'status' => filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT),
         'registration' => $registration
     );
 
    if($userController->Cadastrar($usuario)):
-       echo 'usuario caddastro com sucesso!';
+       $resultado = '<div class="trigger trigger-infor">
+                        <p><b class="trigger-accept-bold">Sucesso:</b> Usuário Cadastrado com sucesso!</p>
+                      </div>';
+       $insertGoTo = HOME."/user/index";
+       header("refresh:2;url={$insertGoTo}");
    else:
-       echo 'Erro ao tentar cadastrar!';
+       $resultado = '<div class="trigger trigger-error">
+                        <p><b class="trigger-accept-bold">Error:</b> Favor preencha os campos que possuem *!</p>
+                      </div>';
    endif;
 endif;
 ?>
 <section class="content">
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <?= $resultado; ?>
+            </div>
+        </div>
         <div class="row">         
             <div class="col-md-12">
             
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
+                <h3 class="card-title">Cadastrar Usuário</h3>
               </div>
              
               <form method="post" >
@@ -129,7 +141,7 @@ endif;
                         </div>
                         <div class="col-md-3">
                             <label>Status: <span id="rsStatus">&nbsp;</span></label>
-                            <select class="form-control" id="user_status" name="user_status">
+                            <select class="form-control" id="status" name="status">
                                 <option selected disabled value="">Status:</option>
                                 <option value="1">Ativo</option>
                                 <option value="2">Bloqueado</option>

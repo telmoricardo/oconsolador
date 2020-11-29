@@ -92,4 +92,19 @@ class UserDAO extends Conn
         }
     }
 
+    //excluir usuário
+    public function Excluir($cod_pk, $id) {
+        try {
+            $userModel = new User();
+            $userModel::Delele($cod_pk, $id);
+            return $userModel::getResult();
+        } catch (PDOException $e) {
+            if ($this->debug):
+                echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
+            else:
+                return null;
+            endif;
+        }
+    }
+
 }
