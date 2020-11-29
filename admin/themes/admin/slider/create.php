@@ -98,7 +98,7 @@ endif;
                                 <div class="col-md-3">
                                     <label>Tamanho*: <span id="rsStatus">&nbsp;</span></label>
                                     <select class="form-control" id="size" name="size">
-                                        <option selected disabled value="">Status:</option>
+                                        <option selected disabled value="">Tamanho:</option>
                                         <option value="p">pequeno</option>
                                         <option value="g">Grande</option>
                                     </select>

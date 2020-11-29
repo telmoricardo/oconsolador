@@ -42,4 +42,14 @@ class SliderController
     public function Excluir($cod_pk, $id) {
         return $this->sliderDAO->Excluir($cod_pk, $id);
     }
+
+    //atualiza o slider
+    public function Atualizar($Data, $cod_pk, $id) {
+        $this->Data = $Data;
+        if ($Data['title'] && strlen($Data['title']) >= 2):
+            return $this->sliderDAO->Atualizar($Data, $cod_pk, $id);
+        else:
+            return false;
+        endif;
+    }
 }

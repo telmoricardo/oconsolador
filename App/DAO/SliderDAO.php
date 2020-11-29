@@ -79,9 +79,9 @@ class SliderDAO extends Conn
     public function Atualizar($Data, $cod_pk, $id) {
         try {
             $this->Data = $Data;
-            $userModel = new User();
-            $userModel::Update($Data, $cod_pk, $id);
-            return $userModel::getResult();
+            $sliderModel = new Slider();
+            $sliderModel::Update($Data, $cod_pk, $id);
+            return $sliderModel::getResult();
         } catch (PDOException $e) {
             if ($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";

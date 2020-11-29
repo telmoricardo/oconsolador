@@ -90,6 +90,7 @@ endif;
                         <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Thumb</th>
                             <th>Tituto</th>
                             <th>Link</th>
                             <th>Status</th>
@@ -103,6 +104,7 @@ endif;
                         ?>
                         <tr>
                             <td><?= $slider->id ?></td>
+                            <td><img src="./../../upload/<?= $slider->thumb ?>" width="80" alt=""></td>
                             <td><?= $slider->title ?></td>
                             <td><?= $slider->link ?></td>
                             <td><?= ($slider->status) == 1 ? 'Ativo' : 'Bloqueado' ?></td>
@@ -112,7 +114,6 @@ endif;
                                     <a href="<?= HOME; ?>/slider/update&id=<?= $slider->id; ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
                                     <a href="<?= HOME; ?>/slider/index&del=<?= $slider->id; ?>" onclick="return confirm('Deseja realmente excluir <?= $slider->title; ?>');" title="Excluir" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                 </div>
-
                             </td>
                         </tr>
                         <?php
