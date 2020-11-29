@@ -1,5 +1,55 @@
 <?php
-  require_once '../ConfigAdmin.php';
+require_once '../ConfigAdmin.php';
+use App\Controller\UserController;
+$userController = new UserController();
+
+$btnLogar = filter_input(INPUT_POST, 'btnLogar', FILTER_SANITIZE_STRING);
+if ($btnLogar):
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+    //Email e Senha não pode estar vazio
+    if ($email != null && !empty($email) && $password != null && !empty($password)):
+        //pegando dados do usuario atraves do emal
+        $dadosUsuario = $userController->findUser("email", $email);
+
+        if($dadosUsuario != null):
+            //retorno dados do usuário
+            if (password_verify($password, $dadosUsuario->password) && $dadosUsuario->status == 1):
+                $validarUsuario = $userController->authenticationUser($email, $password);
+                if ($validarUsuario != null):
+                    $_SESSION["id"] = $validarUsuario->id;
+                    $_SESSION["name"] = $validarUsuario->name;
+                    $_SESSION["level"] = $validarUsuario->level;
+                    $_SESSION["logado"] = true;
+
+                    $idUser = $_SESSION["id"];
+                    if ($idUser > 0):
+                        $lastupdate = date("Y-m-d H:i:s");
+
+//                        $dataAcess = array('user_lastaccess' => $lastupdate);
+//                        $userController->lastAccess($dataAcess, "user_id", $idUser);
+                    endif;
+
+                    //se usuário existir, redirecionamento para pagina checkout
+                    $insertGoTo = 'index';
+                    header("refresh:3;url={$insertGoTo}");
+                    /*$resultado = "<div class='alert alert-success'>
+                                    <span>Seja Bem-vindo <b>{$_SESSION["name"]}</b>, estamos redirecionando para o painel administrativo</b></span>
+                                 </div>";*/
+                    echo '<span>Seja Bem-vindo <b>{$_SESSION["name"]}</b>, estamos redirecionando para o painel administrativo</b></span>';
+                endif;
+            else:
+                echo "<span><b>Error, </b> usuario ou senha incompativeis!!!</span>";
+            endif;
+        else:
+          echo "<span><b>Error, </b> usuário não cadastrado, favor cadastre-se!!!</span>";
+        endif;
+    else:
+        echo "<span><b>Informe, </b> e-mail e senha para acessar o painel!</span>";
+    endif;
+endif;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,9 +81,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Faça login para iniciar sua sessão</p>
 
-      <form action="http://localhost/consolador/admin/index.php" method="post">
+      <form method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -41,7 +91,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -59,7 +109,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <input type="submit" name="btnLogar" class="btn btn-primary btn-block" value="Login">
           </div>
           <!-- /.col -->
         </div>
@@ -74,12 +124,6 @@
 </div>
 <!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="<?= INCLUDE_PATH; ?>/assets/js/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?= INCLUDE_PATH; ?>/assets/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?= INCLUDE_PATH; ?>/assets/js/adminlte.min.js"></script>
 
 </body>
 </html>

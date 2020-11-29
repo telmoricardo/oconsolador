@@ -59,4 +59,14 @@ class UserController
     public function Excluir($cod_pk, $id) {
         return $this->userDAO->Excluir($cod_pk, $id);
     }
+
+    //autenticação usuario
+    public function authenticationUser($email, $password) {
+        return $this->userDAO->authenticationUser($email, $password);
+    }
+
+    //Logout usuario
+    public function userLogout() {
+        return $this->userDAO->userLogout();
+    }
 }

@@ -107,4 +107,28 @@ class UserDAO extends Conn
         }
     }
 
+    //pagina de login -autenticação do usuárip
+    public function authenticationUser($email, $password) {
+        try {
+            $userModel = new User();
+            $Query = "SELECT * FROM users WHERE email = :email AND password = :password";
+            $Fields = array("email" => $email, "password" => $password);
+            $userModel::FullRead($Query, $Fields);
+            return $userModel::getResult();
+        }catch (PDOException $e) {
+            if ($this->debug):
+                echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
+            else:
+                return null;
+            endif;
+        }
+    }
+
+    // usuário deslogar
+    public function userLogout() {
+        $_SESSION['logado'] = false;
+        session_destroy();
+        header('location: login.php');
+    }
+
 }
