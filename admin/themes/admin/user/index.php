@@ -81,12 +81,13 @@
                             <td><?= $user->name ?> <?= $user->lastname ?></td>
                             <td><?= $user->email ?></td>
                             <td><?= $helper->converteDataHora($user->registration)  ?></td>
-                            <td><?= ($user->user_status) == 1 ? 'Ativo' : 'Bloqueado' ?></td>
+                            <td><?= ($user->status) == 1 ? 'Ativo' : 'Bloqueado' ?></td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="<?= HOME; ?>/user/update&id=<?= $user->id; ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="<?= HOME; ?>/user/index&del=<?= $user->id; ?>" onclick="return confirm('Deseja realmente excluir <?= $user->name; ?>');" title="Excluir" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                 </div>
+
                             </td>
                         </tr>
                         <?php
@@ -98,17 +99,6 @@
                             ?>
                     </table>
                 </div>
-
-<!--                <div class="card-footer clearfix">-->
-<!--                    <ul class="pagination pagination-sm m-0 float-right">-->
-<!--                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>-->
-<!--                        <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-<!--                        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<!--                        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<!--                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-
                 <?php
                 //paginação de resultados
                 $total = $userController->countUsers();

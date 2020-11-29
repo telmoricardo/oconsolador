@@ -61,4 +61,35 @@ class UserDAO extends Conn
         }
     }
 
+    //seleciona o campo e o valor
+    public function findUser($field, $value) {
+        try {
+            $userModel = new User();
+            $userModel::ReadByField($field, $value);
+            return $userModel::getResult();
+        } catch (PDOException $e) {
+            if ($this->debug):
+                echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
+            else:
+                return null;
+            endif;
+        }
+    }
+
+    //atualizar o usuario
+    public function Atualizar($Data, $cod_pk, $id) {
+        try {
+            $this->Data = $Data;
+            $userModel = new User();
+            $userModel::Update($Data, $cod_pk, $id);
+            return $userModel::getResult();
+        } catch (PDOException $e) {
+            if ($this->debug):
+                echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
+            else:
+                return null;
+            endif;
+        }
+    }
+
 }
