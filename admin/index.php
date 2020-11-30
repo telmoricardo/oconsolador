@@ -249,7 +249,23 @@ endif;
               </li> 
             </ul>
           </li>
-
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                    Posts
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?= HOME; ?>/post/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lista</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -809,5 +825,9 @@ endif;
 <!-- <script src="<?= INCLUDE_PATH; ?>/assets/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="<?= INCLUDE_PATH; ?>/assets/js/demo.js"></script>
+
+<!--FUNÇÃO PARA PERSONALIZAÇÃO OS TEXTOS-->
+<script src="<?= INCLUDE_PATH; ?>/assets/js/tinymce/tinymce.min.js" type="text/javascript"></script>
+<script src="<?= INCLUDE_PATH; ?>/assets/js/tinymce_funcao.js" type="text/javascript"></script>
 </body>
 </html>
