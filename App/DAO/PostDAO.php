@@ -30,7 +30,8 @@ class PostDAO extends Conn
     public function allPosts($inicio = null, $quantidade = null) {
         try {
             $model = new Post();
-            $Query = "SELECT * FROM posts ORDER BY id DESC LIMIT {$inicio}, {$quantidade}";
+            $Query = "SELECT p.id, p.title, p.description, p.status, p.thumb, p.data, p.category, c.title as titleCategory FROM posts p 
+                      INNER JOIN category c ON c.id = p.category ORDER BY p.id DESC LIMIT {$inicio}, {$quantidade}";
             $model::FullRead($Query, array());
             return $model::getResult();
         } catch (PDOException $e) {
@@ -105,5 +106,21 @@ class PostDAO extends Conn
         }
     }
 
+    //listar post por status e category
+    public function allStatusCategory($status, $category, $inicio = null, $quantidade = null){
+        try {
+            $model = new Post();
+            $query = "SELECT * FROM posts WHERE status = ? AND category = ? ORDER BY id DESC LIMIT {$inicio}, {$quantidade}";
+            $arrayParams = array($status, $category);
+            $model::SQLGeneric($query,$arrayParams,true);
+            return $model::getResult();
+        }catch (PDOException $e) {
+            if ($this->debug):
+                echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
+            else:
+                return null;
+            endif;
+        }
+    }
 
 }

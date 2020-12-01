@@ -89,6 +89,7 @@ $lista = $postController->allPosts($inicio, $maximo);
                             <th>ID</th>
                             <th>Thumb</th>
                             <th>Tituto</th>
+                            <th>Categoria</th>
                             <th>Status</th>
                             <th>Data</th>
                             <th>Ações</th>
@@ -102,6 +103,7 @@ $lista = $postController->allPosts($inicio, $maximo);
                             <td><?= $post->id ?></td>
                             <td><img src="./../../upload/<?= $post->thumb ?>" width="60" alt=""></td>
                             <td><?= $post->title ?></td>
+                            <td><?= $post->titleCategory?></td>
                             <td><?= ($post->status) == 1 ? 'Ativo' : 'Bloqueado' ?></td>
                             <td><?= $helper->converteDataHora($post->data)?></td>
                             <td>

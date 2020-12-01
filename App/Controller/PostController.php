@@ -59,5 +59,10 @@ class PostController
         return $this->postDAO->Excluir($cod_pk, $id);
     }
 
+    //listar post por status e category
+    public function allStatusCategory($status, $category, $inicio = null, $quantidade = null){
+        return $this->postDAO->allStatusCategory($status,$category,$inicio, $quantidade);
+    }
+
 
 }

@@ -1,3 +1,7 @@
+<?php
+    $postController = new \App\Controller\PostController();
+    $helper = new \App\Helper\Helper();
+?>
 <!-- --------------------------------- CAROUSEL TOPO ---------------------------- -->
 <div class="slide container" style="margin-top: 8.4em;">
     <!--banner rotativos -->
@@ -622,32 +626,46 @@
             <div class="bx-post">
 
                 <?php
-                for ($i = 0; $i <= 2; $i++):
-                    ?>
-                    <!-- POST -->
-                    <div class="post">
-                        <div class="thumb-post">
-                            <a href="<?= HOME; ?>/artigo">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/2.jpg" alt="" srcset="">
-                            </a>
-                        </div>
-                        <div class="description">
-                            <div class="day">
-                                <h3>29<br>
-                                    <p>Jun</p>
-                                </h3>
+                const BLOG = 1;
+                const ATIVO = 1;
+                $listP = $postController->allStatusCategory(BLOG,ATIVO,0,3);
+                if($listP == null):
+                    echo "Não existem posts no momento";
+                else:
+                    foreach ($listP as $post):
+                        ?>
+                        <!-- POST -->
+                        <div class="post">
+                            <div class="thumb-post">
+                                <a href="<?= HOME; ?>/artigo/<?= $post->url; ?>">
+                                    <img src="./upload/<?= $post->thumb; ?>" alt="" srcset="">
+                                </a>
                             </div>
-                            <div class="description-post">
-                                <h2><a href="<?= HOME; ?>/artigo">DONATE FOR WATER</a></h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor.
-                                </p>
+                            <div class="description">
+                                <div class="day">
+                                    <?php
+                                        $data = $helper->converteData($post->data);
+                                        $d = explode("/", $data);
+
+                                    ?>
+                                    <h3><?= $d[0] ?><br>
+                                        <p><?= $helper->pegarMes($d[1]); ?></p>
+                                    </h3>
+                                </div>
+                                <div class="description-post">
+                                    <h2><a href="<?= HOME; ?>/artigo/<?= $post->url; ?>"><?= $post->title; ?></a></h2>
+                                    <p>
+                                        <?= $helper->limitarTexto($post->resume, 50);
+                                            //$texto = html_entity_decode($post->resume);
+                                             ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- END POST -->
-                    <?php
-                endfor;
+                        <!-- END POST -->
+                        <?php
+                    endforeach;
+                endif;
                 ?>
 
             </div>

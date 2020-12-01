@@ -13,7 +13,6 @@ $btnEnviar = filter_input(INPUT_POST, 'btnEnviar', FILTER_SANITIZE_STRING);
 if ($btnEnviar):
 
     $titlePost = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
-
     //imagem esta recebendo files imagemArtigo
     $imagem = $_FILES['thumb'];
     //recebendo a imagem, nome do produto, tamanho da imagem, pasta

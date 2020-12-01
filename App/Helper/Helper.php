@@ -35,7 +35,7 @@ class Helper {
             $rstData = "$d[2]-$d[1]-$d[0]"; //separa as datas $d[2] = ano $d[1] = mes etc...
             return $rstData;
         } else if (strstr($data, "-")) {
-            $data = substr($data, 0, 25);
+            $data = substr($data, 0, 10);
             $d = explode("-", $data);
             $rstData = "$d[2]/$d[1]/$d[0]";
             return $rstData;
@@ -113,7 +113,7 @@ class Helper {
     }
     
    
-    public static function limitarTexto($texto, $limite) {
+    public function limitarTexto($texto, $limite) {
         $contador = strlen($texto);
         if ($contador >= $limite) {
             $texto = substr($texto, 0, strrpos(substr($texto, 0, $limite), ' ')) . '...';
@@ -131,6 +131,14 @@ class Helper {
     public static function moeda($Data) { 
         self::$Data = str_replace(",",".",str_replace(".","",$Data));
         return self::$Data;
+    }
+
+    public function pegarMes($data){
+        $monthNum  = $data;
+        $dateObj   = \DateTime::createFromFormat('m', $monthNum);
+        $dateObj->setTimezone(new \DateTimeZone('America/Sao_Paulo'));
+        $monthName = $dateObj->format('M');
+        return $monthName;
     }
    
 

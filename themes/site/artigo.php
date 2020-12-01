@@ -1,3 +1,21 @@
+<?php
+$url = strip_tags(trim(filter_input(INPUT_GET, 'url', FILTER_DEFAULT)));
+$url = explode('/', $url);
+$slug = $url[1];
+$postController = new \App\Controller\PostController();
+$helper  = new \App\Helper\Helper();
+
+$dados = $postController->find("url", $slug);
+if($dados != null):
+    $title = $dados->title;
+    $author = $dados->author;
+    $statusS = $dados->status;
+    $description = $dados->description;
+    $idCategory = $dados->category;
+    $data = $dados->data;
+    $image = $dados->thumb;
+endif;
+?>
 <main class="main-artic container_">
     <div class="box-article-full">
         <!--SEARCH-->
@@ -20,29 +38,18 @@
         <section class="sec-artic">
             <h1 class="font-zero">Artigo Consolador | consolador.org.br</h1>
             <article class="art-artic">
-                <h2>DONATE FOR WATER</h2>
-                <p><strong>Por:</strong> Consolador as <span> 09/04/2020</span></p>
+                <h2><?= strtoupper($title) ?></h2>
+                <p><strong>Por:</strong> <?= $author?> as <span> <?= $helper->converteData($data); ?></span></p>
                 <div class="thumb-artic">
-                    <img src="<?= INCLUDE_PATH; ?>/assets/image/2.jpg" alt="" srcset="">
+                    <img src="<?= HOME; ?>/upload/<?= $image; ?>" alt="" srcset="">
                     <!--<span>fitOne</span>-->
                     <div class="desc-artc">
-                        
-                                <p>Já passou pela sua cabeça que vários problemas de saúde têm relação com seu intestino e sua microbiota?</p>
-                                <p>Cuidar do corpo não é nada fácil devido a sua grande complexidade. Por isso, na hora de cuidar do seu intestino, não adianta só olhar para o padrão das fezes ou usar laxantes para auxiliar. Sua alimentação tem relação direta com sua saúde intestinal, e doenças crônicas como a obesidade. É muito importante cuidarmos do nosso segundo cérebro.</p>
-                                <p>O coração, o fígado e os rins que nos perdoem, mas não há órgão mais fascinante que o intestino. A começar pelo seu tamanho descomunal: se abríssemos e esticássemos seus dois trechos – o delgado e o grosso -, ele ocuparia uma área de 250 metros quadrados, o equivalente a uma quadra de tênis. Tudo está enrolado e compactado dentro do ventre. E olha que isso nem é o aspecto mais interessante da coisa: o intestino tem neurônios e aloja trilhões de bactérias, boa parte delas envolvida em processos cruciais ao organismo. E você pensando que ele era um longo tubo por onde a comida passa, nutrientes são absorvidos e o que não é aproveitado vira cocô.</p>
-                                <p>Espera: neurônios lá no abdômen? Sim, falamos das mesmíssimas células que constituem o cérebro. “O intestino tem cerca de 500 milhões delas”, calcula o gastroenterologista Eduardo Antonio André, do Hospital do Servidor Público Estadual, em São Paulo. É menos que a massa cinzenta, que tem bilhões, mas o suficiente para formar um sistema nervoso próprio, responsável por coordenar tarefas como a liberação de substâncias digestivas e os movimentos que estimulam o bolo fecal a ir embora. “Esses circuitos operam sozinhos, ou seja, independem do comando cerebral”, destaca André. Dá pra entender por que apelidaram o intestino de segundo cérebro?</p>
-                                <p>Os neurônios intestinais chamam a atenção também pela sua farta produção de serotonina, molécula que nos leva ao estado de bem-estar – 90% da serotonina descarregada pelo corpo é fabricada ali. “Esse neurotransmissor é importante porque garante o funcionamento adequado do órgão”, diz o médico Henrique Ballalai, da Academia Brasileira de Neurologia. Mas se sabe que ele ainda pode exercer um efeito sistêmico. O fato é que a serotonina é só um dos mais de 30 mensageiros químicos montados no ventre.</p>
-                                <p>Essas substâncias são encarregadas de transmitir recados de um lado para o outro e estabelecer comunicação eficiente entre o intestino e o cérebro de verdade. “Essa conversa acontece diretamente por meio do nervo vago, estrutura que passa pelo tórax e liga o sistema gastrointestinal à cabeça”, descreve o endocrinologista Filippo Pedrinola, da Sociedade Brasileira de Endocrinologia e Metabologia. O nervo vago é uma via de mão dupla: assim como o abdômen manda mensagens para a massa cinzenta, o correio inverso também ocorre. “É por isso que, diante de uma situação de estresse, podemos sentir frio na barriga ou vontade de ir ao banheiro”, esclarece Pedrinola.</p>
-                                <p>Mas é possível prevenir, ou até reverter, desequilíbrios na microbiota intestinal? A resposta é sim. A flora pode ser modulada para que as bactérias do bem vivam em paz ou voltem a reinar. E isso é obtido, em parte, via alimentação, quando se investe nos probióticos, lácteos enriquecidos com micro-organismos benéficos à saúde. Mas fique atento ao rótulo: nem todo iogurte, por exemplo, é probiótico. Repare se a embalagem informa isso e qual sua concentração de bactérias, medida em UFC (unidade formadora de colônia). “O produto precisa ter de 2 a 10 bilhões de UFC por dose”, avisa Pedrinola. Ah, probióticos também estão disponíveis hoje em cápsulas e sachês.</p>
-                                <p>Só que não dá pra engolir um monte de bichinhos e se esquecer de alimentar a flora local. Essa é a função dos prebióticos. “Eles são ricos em fibras solúveis, que o sistema digestivo não aproveita sem a cooperação da microbiota”, define o microbiologista Arthur Ouwehand, da Divisão de Nutrição & Saúde da DuPont, na Finlândia. Tais componentes, encontrados em vegetais como a cebola e a aveia, nutrem as bactérias. E elas, por sua vez, agradecem devolvendo vantagens ao nosso corpo.</p>
-                                <p>Fonte: Saúde Abril.</p>
-                                <p>Quer mais informações? Fale no nosso chat com nossa Nutri! É só perguntar.</p>
-                                           
+                        <?= html_entity_decode($description);?>
                     </div>
                     <!--LIKE FACEBOOK-->
                 <div class="bx-like-face">
                     <div class="like-face">
-                        <div class="fb-like" data-href="http://localhost/projetos/consolador/artigo" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+                        <div class="fb-like" data-href="<?= HOME;?>/artigo/<?= $slug; ?>" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
                     </div>
                 </div>
                 <!--END LIKE FACEBOOK-->

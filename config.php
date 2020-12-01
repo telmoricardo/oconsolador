@@ -4,6 +4,8 @@
 //session_start();
 //ob_start();
 //date_default_timezone_set('America/Sao_Paulo');
+setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
+date_default_timezone_set( 'America/Sao_Paulo' );
 
 // CONFIGURAÇÕES ENVIRONMENT ####################
 require 'environment.php';
@@ -27,7 +29,7 @@ if (ENVIRONMENT == 'development') {
     define('HOST', '127.0.0.1');
     define('USER', 'root');
     define('PASS', '');
-    define('DBSA', 'consolador_site');
+    define('DBSA', 'consolador');
 } else {
     //PRODUÇÃO
     // CONFIGURAÇÕES DO TEMA ####################

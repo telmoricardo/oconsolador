@@ -52,7 +52,7 @@ if ($btnEnviar):
         'description' =>  filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
         'status' => filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT),
         'thumb' => $nomeImage,
-        'data' => $registration
+//        'data' => $registration
     );
 
     if($postController->Atualizar($post, "id", $id)):
