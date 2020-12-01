@@ -5,40 +5,38 @@ $postController = new \App\Controller\PostController();
 $helper = new Helper();
 
 /** Pegando o cod que esta vindo através da url del * */
-$deletar = filter_input(INPUT_GET, "del", FILTER_SANITIZE_NUMBER_INT);
-if ($deletar):
-    $slider = $sliderController->findSlider("id", $deletar);
+$id = filter_input(INPUT_GET, "del", FILTER_SANITIZE_NUMBER_INT);
+if ($id):
+    $post = $postController->find("id", $id);
 
-    $capa = "../upload/" .$slider->thumb;
+    $capa = "../upload/" .$post->thumb;
     if (file_exists($capa) && !is_dir($capa)):
         unlink($capa);
-        if ($sliderController->Excluir("id", $deletar)):
+        if ($postController->Excluir("id", $id)):
             echo '<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
                 alert ("Slider removido com sucesso!")
                 </SCRIPT>';
-            $insertGoTo = HOME . "/slider/index";
+            $insertGoTo = HOME . "/post/index";
             header("refresh:2;url={$insertGoTo}");
         else:
             echo '<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
                 alert ("Error ao remover o usuario!")
             </SCRIPT>';
-            $insertGoTo = HOME . "/slider/index";
+            $insertGoTo = HOME . "/post/index";
             header("refresh:2;url={$insertGoTo}");
         endif;
     endif;
 
 
 endif;
-
- //máximo de links na paginação
- $maxlinks = 4;
- $pagina = (isset($_GET['pagina'])) ? ($_GET['pagina']) : 1;
- //quantidade de publicação por páginas
- $maximo = 10;
- $inicio = (($maximo * $pagina) - $maximo);
-
- //listar
- $lista = $postController->allPosts($inicio, $maximo);
+//máximo de links na paginação
+$maxlinks = 4;
+$pagina = (isset($_GET['pagina'])) ? ($_GET['pagina']) : 1;
+//quantidade de publicação por páginas
+$maximo = 10;
+$inicio = (($maximo * $pagina) - $maximo);
+//listar
+$lista = $postController->allPosts($inicio, $maximo);
 ?>
 <section class="content-header">
     <div class="container-fluid">

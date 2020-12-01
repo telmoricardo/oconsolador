@@ -4,18 +4,18 @@
 namespace App\Controller;
 
 
-use App\DAO\PostDAO;
+use App\DAO\CategoryDAO;
 
-class PostController
+class CategoryController
 {
 
-    private $postDAO;
+    private $categoryDAO;
     private $data;
 
 
     public function __construct()
     {
-        $this->postDAO = new PostDAO();
+        $this->categoryDAO = new CategoryDAO();
     }
 
     public function Cadastrar($data)
@@ -30,9 +30,14 @@ class PostController
 
     }
 
-    //listar com limite
+    //listar usuários com limite
     public function allPosts($inicio = null, $quantidade = null) {
         return $this->postDAO->allPosts($inicio, $quantidade);
+    }
+
+    //listar
+    public function all() {
+        return $this->categoryDAO->all();
     }
     //QUANTIDADE DE POSTS - METODO AUXILIAR PARA FAZER PAGINAÇÃO DE RESULTADOS
     public function countPosts() {
@@ -44,20 +49,28 @@ class PostController
         return $this->postDAO->find($field, $value);
     }
 
-    //atualiza
+    //atualiza o usuario
     public function Atualizar($Data, $cod_pk, $id) {
         $this->Data = $Data;
-        if ($Data['title'] && strlen($Data['title']) >= 2):
-            return $this->postDAO->Atualizar($Data, $cod_pk, $id);
+        if ($Data['name'] && strlen($Data['name']) >= 2):
+            return $this->userDAO->Atualizar($Data, $cod_pk, $id);
         else:
             return false;
         endif;
     }
 
-    //Excluir
+    //Excluir usuario
     public function Excluir($cod_pk, $id) {
-        return $this->postDAO->Excluir($cod_pk, $id);
+        return $this->userDAO->Excluir($cod_pk, $id);
     }
 
+    //autenticação usuario
+    public function authenticationUser($email, $password) {
+        return $this->userDAO->authenticationUser($email, $password);
+    }
 
+    //Logout usuario
+    public function userLogout() {
+        return $this->userDAO->userLogout();
+    }
 }

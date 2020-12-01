@@ -3,9 +3,9 @@
 
 namespace App\DAO;
 
-use App\Model\Post;
+use App\Model\Category;
 
-class PostDAO extends Conn
+class CategoryDAO extends Conn
 {
 
     private $debug;
@@ -14,7 +14,7 @@ class PostDAO extends Conn
     public function Cadastrar($data){
         try {
             $this->data = $data;
-            $model = new Post();
+            $model = new Category();
             $model::Create($data);
             return $model::getResult();
         }catch (\PDOException $e){
@@ -26,11 +26,27 @@ class PostDAO extends Conn
         }
     }
 
-    //listar com limite
+    //listar posts com limite
     public function allPosts($inicio = null, $quantidade = null) {
         try {
-            $model = new Post();
-            $Query = "SELECT * FROM posts ORDER BY id DESC LIMIT {$inicio}, {$quantidade}";
+            $model = new Category();
+            $Query = "SELECT * FROM category ORDER BY id DESC LIMIT {$inicio}, {$quantidade}";
+            $model::FullRead($Query, array());
+            return $model::getResult();
+        } catch (PDOException $e) {
+            if ($this->debug):
+                echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
+            else:
+                return null;
+            endif;
+        }
+    }
+
+    //listar
+    public function all() {
+        try {
+            $model = new Category();
+            $Query = "SELECT * FROM category WHERE status = 1 ORDER BY id DESC";
             $model::FullRead($Query, array());
             return $model::getResult();
         } catch (PDOException $e) {
@@ -45,8 +61,8 @@ class PostDAO extends Conn
     //conta as quantidades de listas
     public function countPosts() {
         try {
-            $model = new Post();
-            $Query = "SELECT * FROM posts";
+            $model = new Category();
+            $Query = "SELECT * FROM category";
             $model::FullRead($Query, array());
             $pkCount = ($model::getResult() != null) ? count($model::getResult()) : 0;
             return $total = $pkCount;
@@ -62,7 +78,7 @@ class PostDAO extends Conn
     //seleciona o campo e o valor
     public function find($field, $value) {
         try {
-            $model = new Post();
+            $model = new Category();
             $model::ReadByField($field, $value);
             return $model::getResult();
         } catch (PDOException $e) {
@@ -78,9 +94,9 @@ class PostDAO extends Conn
     public function Atualizar($Data, $cod_pk, $id) {
         try {
             $this->Data = $Data;
-            $model = new Post();
-            $model::Update($Data, $cod_pk, $id);
-            return $model::getResult();
+            $sliderModel = new Slider();
+            $sliderModel::Update($Data, $cod_pk, $id);
+            return $sliderModel::getResult();
         } catch (PDOException $e) {
             if ($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
@@ -93,9 +109,9 @@ class PostDAO extends Conn
     //excluir
     public function Excluir($cod_pk, $id) {
         try {
-            $model = new Post();
-            $model::Delele($cod_pk, $id);
-            return $model::getResult();
+            $sliderModel = new Slider();
+            $sliderModel::Delele($cod_pk, $id);
+            return $sliderModel::getResult();
         } catch (PDOException $e) {
             if ($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
@@ -104,6 +120,7 @@ class PostDAO extends Conn
             endif;
         }
     }
+
 
 
 }
