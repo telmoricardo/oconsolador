@@ -1,9 +1,13 @@
 <?php
 $postController = new \App\Controller\PostController();
+$categoryController = new \App\Controller\CategoryController();
 $upload = new \App\Helper\Upload();
 $helper = new \App\Helper\Helper();
 
+$listaCategory = $categoryController->all();
+
 $resultado = "";
+$categoriaTitle = '';
 
 $btnEnviar = filter_input(INPUT_POST, 'btnEnviar', FILTER_SANITIZE_STRING);
 if ($btnEnviar):
@@ -103,10 +107,17 @@ endif;
                                 <div class="col-md-3">
                                     <label>Categoria*: </label>
                                     <select class="form-control" id="category" name="category">
-                                        <option selected disabled value="">Categoria:</option>
-                                        <option value="1">Blog</option>
-                                        <option value="2">Creche</option>
-                                        <option value="3">Eventool</option>
+                                        <?php
+                                            if ($listaCategory != null):
+                                                foreach ($listaCategory as $category):
+                                                    echo "<option ";
+                                                    if ($categoriaTitle == $category->id):
+                                                        echo "selected=\"selected\" ";
+                                                    endif;
+                                                    echo "value=\"{$category->id}\"> &raquo; {$category->title} </option>";
+                                                endforeach;
+                                            endif;
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
