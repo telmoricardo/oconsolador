@@ -3,10 +3,9 @@
 
 namespace App\DAO;
 
-use App\Model\Post;
-use App\Model\Slider;
+use App\Model\Brand;
 
-class SliderDAO extends Conn
+class BrandDAO extends Conn
 {
 
     private $debug;
@@ -15,10 +14,9 @@ class SliderDAO extends Conn
     public function Cadastrar($data){
         try {
             $this->data = $data;
-            $sliderModel = new Slider();
-            $sliderModel::Create($data);
-            return $sliderModel::getResult();
-
+            $model = new Brand();
+            $model::Create($data);
+            return $model::getResult();
         }catch (\PDOException $e){
             if($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
@@ -28,13 +26,13 @@ class SliderDAO extends Conn
         }
     }
 
-    //listar usuários com limite
-    public function allSlider($inicio = null, $quantidade = null) {
+    //listar com limite
+    public function all($inicio = null, $quantidade = null) {
         try {
-            $sliderModel = new Slider();
-            $Query = "SELECT * FROM sliders ORDER BY id DESC LIMIT {$inicio}, {$quantidade}";
-            $sliderModel::FullRead($Query, array());
-            return $sliderModel::getResult();
+            $model = new Brand();
+            $Query = "SELECT * FROM brands ORDER BY id DESC LIMIT {$inicio}, {$quantidade}";
+            $model::FullRead($Query, array());
+            return $model::getResult();
         } catch (PDOException $e) {
             if ($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
@@ -45,12 +43,12 @@ class SliderDAO extends Conn
     }
 
     //conta as quantidades de listas
-    public function countSliders() {
+    public function counts() {
         try {
-            $sliderModel = new Slider();
-            $Query = "SELECT * FROM users";
-            $sliderModel::FullRead($Query, array());
-            $pkCount = ($sliderModel::getResult() != null) ? count($sliderModel::getResult()) : 0;
+            $model = new Brand();
+            $Query = "SELECT * FROM brands";
+            $model::FullRead($Query, array());
+            $pkCount = ($model::getResult() != null) ? count($model::getResult()) : 0;
             return $total = $pkCount;
         } catch (PDOException $e) {
             if ($this->debug):
@@ -62,11 +60,11 @@ class SliderDAO extends Conn
     }
 
     //seleciona o campo e o valor
-    public function findSlider($field, $value) {
+    public function find($field, $value) {
         try {
-            $sliderModel = new Slider();
-            $sliderModel::ReadByField($field, $value);
-            return $sliderModel::getResult();
+            $model = new Brand();
+            $model::ReadByField($field, $value);
+            return $model::getResult();
         } catch (PDOException $e) {
             if ($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
@@ -76,13 +74,12 @@ class SliderDAO extends Conn
         }
     }
 
-    //atualizar o usuario
+    //atualizar
     public function Atualizar($Data, $cod_pk, $id) {
         try {
-            $this->Data = $Data;
-            $sliderModel = new Slider();
-            $sliderModel::Update($Data, $cod_pk, $id);
-            return $sliderModel::getResult();
+            $model = new Brand();
+            $model::Update($Data, $cod_pk, $id);
+            return $model::getResult();
         } catch (PDOException $e) {
             if ($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
@@ -92,12 +89,12 @@ class SliderDAO extends Conn
         }
     }
 
-    //excluir usuário
+    //excluir
     public function Excluir($cod_pk, $id) {
         try {
-            $sliderModel = new Slider();
-            $sliderModel::Delele($cod_pk, $id);
-            return $sliderModel::getResult();
+            $model = new Post();
+            $model::Delele($cod_pk, $id);
+            return $model::getResult();
         } catch (PDOException $e) {
             if ($this->debug):
                 echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
@@ -107,11 +104,11 @@ class SliderDAO extends Conn
         }
     }
 
-    //listar por status
-    public function allStatus($status){
+    //listar post por status e category
+    public function allStatus($status, $inicio = null, $quantidade = null){
         try {
-            $model = new Slider();
-            $query = "SELECT * FROM sliders WHERE status = ? ORDER BY id";
+            $model = new Brand();
+            $query = "SELECT * FROM brands WHERE status = ? ORDER BY id DESC LIMIT {$inicio}, {$quantidade}";
             $arrayParams = array($status);
             $model::SQLGeneric($query,$arrayParams,true);
             return $model::getResult();
@@ -123,6 +120,5 @@ class SliderDAO extends Conn
             endif;
         }
     }
-
 
 }

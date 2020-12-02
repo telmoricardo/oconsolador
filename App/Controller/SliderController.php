@@ -52,4 +52,10 @@ class SliderController
             return false;
         endif;
     }
+
+    //listar por status
+    public function allStatus($status){
+        return $this->sliderDAO->allStatus($status);
+    }
+
 }

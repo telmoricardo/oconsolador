@@ -49,7 +49,7 @@ img{max-width:100%;height:auto;}
 .top-conf .social-top .icon-top-social{width: 0.938em;height: 0.813em;float: left;margin: 1em 0.3em 0 0.8em;}
 .top-conf ul li a{color: #6a6c74;}
 
-.box-top-two{width:100%; height: 110px; float: left;background: #3e4095;transition: all ease 0.5s;}
+.box-top-two{width:100%; height: 110px; float: left;background: #aedcf1;transition: all ease 0.5s;}
 /*LOGO*/
 .bx-main-logo{width:14.813em;float: left;margin-top: 0.5em; }
 .bx-main-logo .logo{width:100%;float: left;}
@@ -57,13 +57,13 @@ img{max-width:100%;height:auto;}
 .bx-nav{float: right;}
 .bx-nav .menu{position: relative;margin-top: 3.3em;}
 .bx-nav .menu li{float: left;padding: 0 0.5em;}
-.bx-nav .menu li a{color: #fff;transition: all ease 0.5s;}
-.bx-nav .menu li:hover a{color: #ffcc29;}
+.bx-nav .menu li a{color: #3e4095;transition: all ease 0.5s;}
+.bx-nav .menu li:hover a{color: #3e4095;}
 .bx-nav .menu li:hover a::after{
     content: "";
     width: 100%;
     height: 3px;
-    background: #ffcc29;
+    background: #3e4095;
     display: block;
     position: relative;
 
@@ -861,7 +861,7 @@ img{max-width:100%;height:auto;}
 }
 
 .help-us h1{
-    font-weight: lighter;
+    font-weight: bold;
     font-size: 2rem;
     margin-bottom: 1rem;
 }
@@ -1151,16 +1151,17 @@ img{max-width:100%;height:auto;}
 
 .page-about h2{
     text-align: center;
-    font-size: 2rem;
+    font-size: 2em !important;
     margin-bottom: 1rem;
-    color: #000;
+    color: #0164a4;
 }
 
 .page-about p{
     text-align: justify;
-    font-size: 0.9rem;
+    font-size: 1em !important;
     color: #626262;
     margin-bottom: 1rem;
+    line-height: 1.3em !important;
 }
 
 .thumb-page-about{
@@ -1181,7 +1182,7 @@ img{max-width:100%;height:auto;}
 .desc-page-about h2{
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
-    color: #000;
+    color: #0164a4;
 }
 .desc-page-about p{
     font-size: 0.9rem;
@@ -1608,7 +1609,7 @@ img{max-width:100%;height:auto;}
 
 .header-nursery h1{
     color: #00012d;
-    font-weight: lighter;
+    font-weight: normal;
 }
 .header-nursery h1 strong{
     color: #5f7d95;
@@ -1648,7 +1649,8 @@ img{max-width:100%;height:auto;}
 .desc-nursery_ p{
     color: #636363;
     margin-bottom: 0.5rem;
-    font-size: 0.8rem;
+    font-size: 1em !important;
+    line-height: 1.4em;
 }
 
 .box-nursery{
@@ -1657,17 +1659,24 @@ img{max-width:100%;height:auto;}
     position: relative;
     margin: 2rem 0 4rem 0;
 }
-
+.box-nursery h1{
+    font-size: 1.5em !important;
+    text-align: center !important;
+    margin: 1.5rem 0;
+    color: #016490;
+    text-transform: uppercase;
+}
 .nursery{
-    max-width: 31.3%;
+    max-width: 25% !important;
     width: 100%;
     float: left;
     padding: 1rem;
-    border: 0.3px solid #cac7c7;
-    box-shadow: 0px 0px 2px 4px #dedede;
+    /*border: 0.3px solid #cac7c7;*/
+    /*box-shadow: 0px 0px 2px 4px #dedede;*/
 }
+
 .nursery:nth-of-type(2){
-    margin: 0 2%;
+    /*margin: 0 2%;*/
 }
 
 .title-nursery{
@@ -1723,7 +1732,8 @@ img{max-width:100%;height:auto;}
     position: relative;
 }
 .thumb-nursery img{
-    width: 100%;
+    width: 40%;
+    margin: 0 30%;
     float: left;
 }
 .desc-nursery{
@@ -1734,7 +1744,7 @@ img{max-width:100%;height:auto;}
 
 .desc-nursery p{
     text-align: justify;
-    font-size: 0.8rem;
+    font-size: 1em !important;
     color: #636363;
 }
 

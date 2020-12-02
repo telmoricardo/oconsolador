@@ -1,7 +1,7 @@
 <!-- BANNER ABOUT -->
 <div class="bx-banner-news">
     <div class="card-img-overlay">
-        <img src="<?= INCLUDE_PATH; ?>/assets/image/banner-about.jpg" alt=""/>
+        <img src="<?= INCLUDE_PATH; ?>/assets/image/consolador.jpg" alt=""/>
         <div class="bx-header-about">
             <div class="header-about">
                 <h1 class="card-title">O Consolador</h1>
@@ -23,15 +23,11 @@
                 <div class="page-about">
                     <h2>Quem Somos</h2>
                     <p class="card-text text-justify">
-                        Não se tem registro, até o início do século XX, do desenvolvimento de políticas sociais desenhadas pelo Estado brasileiro. As populações economicamente carentes eram entregues aos cuidados da Igreja Católica através de algumas instituições, entre elas as Santas Casas de Misericórdia. No Brasil, a primeira Santa Casa foi fundada no ano de 1543, na Capitania de São Vicente (Vila de Santos). Estas instituições atuavam tanto com os doentes quanto com os órfãos e desprovidos. O sistema da Roda das Santas Casas, vindo da Europa no século XIX, tinha o objetivo de amparar as crianças abandonadas e de recolher donativos.                    
+                        Somos um grupo de voluntários que nos unimos com o propósito de transformar a realidade do Sol Nascente. As Obras Sociais O Consolador foi fundada em setembro de 2005 com o objetivo de promover socialmente a comunidade do Sol Nascente/Ceilância.
                     </p>
                     <p class="card-text text-justify">
-                        A Roda constituía-se de um cilindro oco de madeira que girava em torno do próprio eixo com uma abertura em uma das faces, alocada em um tipo de janela onde eram colocados os bebês. A estrutura física da Roda privilegiava o anonimato das mães, que não podiam, pelos padrões da época, assumir publicamente a condição de mães solteiras. Mais tarde em 1927 o Código de Menores proibiu o sistema das Rodas, de modo a que os bebês fossem entregues diretamente a pessoas destas entidades, mesmo que o anonimato dos pais fosse garantido. O registro da criança era uma outra obrigatoriedade deste novo procedimento.                    
+                        Desde então, são atendidas mais de 70 famílias, sendo ofertados a elas cursos gratuitos, cursos de artesanato, oficina de violão, distribuídos café da manhã, sopa, cestas básicas, cestas de verdura, além de acompanhamento familiar.
                     </p>
-                    <p class="card-text text-justify">
-                        O ensino obrigatório foi regulamentado em 1854. No entanto, a lei não se aplicava universalmente, já que ao escravo não havia esta garantia. O acesso era negado também àqueles que padecessem de moléstias contagiosas e aos que não tivessem sido vacinados. Estas restrições atingiam as crianças vindas de famílias que não tinham pleno acesso ao sistema de saúde, o que faz pensar sobre a influência da acessibilidade e qualidade de uma política social sobre a outra ou como vemos aqui, de como a não cobertura da saúde restringiu o acesso das crianças à escola, propiciando uma dupla exclusão aos direitos sociais.                    
-                    </p>
-
                 </div>
             </div>
             <!--END DESCRIPTION ABOUT-->
@@ -40,14 +36,26 @@
             <div class="row-about">
                 <div class="col-md-about">
                     <div class="thumb-page-about">
-                        <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt=""/>
+                        <img src="<?= INCLUDE_PATH; ?>/assets/image/sol-nascente.jpg" alt=""/>
                     </div>
                 </div>
                 <div class="col-md-about">
                     <div class="desc-page-about">
-                        <h2>Missão</h2>
+                        <h2>Você conhece o Sol Nascente?</h2>
                         <p class="card-text text-justify">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            Alguns dados do condomínio Sol Nascente/Ceilândia;
+                        </p>
+                        <p class="card-text text-justify">
+                            - Apenas 0,51% das crianças frequentam creches;
+                        </p>
+                        <p class="card-text text-justify">
+                            - Junto ao Pôr do Sol, formam a maior favela da América Latina;
+                        </p>
+                        <p class="card-text text-justify">
+                            - Da população total, mais de 65% da população não estuda;
+                        </p>
+                        <p class="card-text text-justify">
+                            - Alto ínidce de criminalidade; Falta de saneamento básico; Domicílios na região: 20.686; População: 78.912.
                         </p>
                     </div>
                 </div>
@@ -57,36 +65,30 @@
             <div class="row-about">
                 <div class="col-md-about">
                     <div class="thumb-page-about">
-                        <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt=""/>
+                        <img src="<?= INCLUDE_PATH; ?>/assets/image/atividades.jpg" alt=""/>
                     </div>
                 </div>
                 <div class="col-md-about">
                     <div class="desc-page-about">
-                        <h2>Visão</h2>
+                        <h2>Nossas atividades</h2>
                         <p class="card-text text-justify">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            <strong>Público alvo:</strong> crianças, jovens e adultos;
+                        </p>
+                        <p class="card-text text-justify">
+                            <strong>Atividades:</strong> centro de nutrição: café da manhã, sopa, horta, distribuição de cestas básica e de verduras;
+                        </p>
+                        <p class="card-text text-justify">
+                            - Cursos: alfabetização para adultos, artesanato, estudo da doutrina espírita (evangelização infantil, mocidade e adulto), reuniões públicas, oficinas de relacionamento e família;
+                        </p>
+                        <p class="card-text text-justify">
+                            - Campanha de higiene e campanha de arrecadação de alimentos;
+                        </p>
+                        <p class="card-text text-justify">
+                            - Biblioteca
                         </p>
                     </div>
                 </div>
             </div>
-            <!--END ABOUT-->
-            <!--ABOUT-->
-            <div class="row-about">
-                <div class="col-md-about">
-                    <div class="thumb-page-about">
-                        <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt=""/>
-                    </div>
-                </div>
-                <div class="col-md-about">
-                    <div class="desc-page-about">
-                        <h2>Valores</h2>
-                        <p class="card-text text-justify">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!--END ABOUT-->
 
         </article>
         <!--END ARTICLE PAGE ABOUT-->

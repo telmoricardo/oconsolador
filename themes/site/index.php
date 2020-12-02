@@ -1,18 +1,31 @@
 <?php
     $postController = new \App\Controller\PostController();
+    $sliderController = new \App\Controller\SliderController();
+    $brandController = new \App\Controller\BrandController();
     $helper = new \App\Helper\Helper();
+
+    $category = "";
+    $ative = "";
 ?>
 <!-- --------------------------------- CAROUSEL TOPO ---------------------------- -->
 <div class="slide container" style="margin-top: 8.4em;">
     <!--banner rotativos -->
+    <?php
+    $listaS = $sliderController->allStatus(1);
+    if($listaS == null):
+        echo "Não existem posts no momento";
+    else:
+    ?>
     <div class="wrapper">
         <div class="jcarousel-wrapper">
             <div class="jcarousel">
                 <ul>
-                    <!--LISTAR IMAGENS DO BANCO PARA O SLIDER-->
+                    <?php
+                        foreach ($listaS as $slider):
+                    ?>
                     <li>
                         <a href="#" target="_blank">
-                            <img src="<?= INCLUDE_PATH; ?>/assets/image/banner-01.jpg" alt="" />
+                            <img src="./upload/<?= $slider->thumb; ?>" alt="<?= $slider->title; ?>" />
                         </a>
                         <a href="#" class="box-text-banner">
                             <div class="header-banner">
@@ -20,28 +33,9 @@
                             </div>
                         </a>
                     </li>
-                    <!--LISTAR IMAGENS DO BANCO PARA O SLIDER-->
-                    <li>
-                        <a href="#" target="_blank">
-                            <img src="<?= INCLUDE_PATH; ?>/assets/image/banner-02.jpg" alt="" />
-                        </a>
-                        <a href="#" class="box-text-banner">
-                            <div class="header-banner">
-                                <h1 class="title-slider"></h1>
-                            </div>
-                        </a>
-                    </li>
-                    <!--LISTAR IMAGENS DO BANCO PARA O SLIDER-->
-                    <li>
-                        <a href="#" target="_blank">
-                            <img src="<?= INCLUDE_PATH; ?>/assets/image/banner-01.jpg" alt="" />
-                        </a>
-                        <a href="#" class="box-text-banner">
-                            <div class="header-banner">
-                                <h1 class="title-slider"></h1>
-                            </div>
-                        </a>
-                    </li>
+                        <?php
+                            endforeach;
+                    ?>
                 </ul>
             </div>
             <div>
@@ -58,6 +52,9 @@
         <span class="bd-cl-two"></span>
         <span class="bd-cl-three"></span>
     </div>
+    <?php
+        endif;
+    ?>
 </div>
 <!--END CAROUSEL TOP-->
 
@@ -66,8 +63,8 @@
     <section class="sec-about container" id="sobre">
         <h1 class="font-zero"></h1>
         <div id="">
-            <article class="art-about">
-                <div class="full-about">
+            <article class="art-about ">
+                <div class="full-about content">
                     <div class="bx-desc-about">
                         <div class="desc-about">
                             <h2>QUEM NÓS <span>SOMOS</span>
@@ -78,7 +75,7 @@
                                 promover
                                 socialmente a comunidade do Sol Nascente/Ceilância.
                             </p>
-                            <a href="#">
+                            <a href="<?= HOME;?>/sobre">
                                 Saiba mais!
                             </a>
                         </div>
@@ -148,7 +145,7 @@
 
                                 <div class="next-choose">
                                     <div class="choose">
-                                        <a href="">Saiba mais...</a>
+                                        <a href="<?= HOME;?>/creche">Saiba mais...</a>
                                     </div>
                                 </div>
 
@@ -199,74 +196,35 @@
 
         <!-- ARTICLE TAKE ON OUR CAUSE -->
         <article class="article-take-on-our-cause">
-
+            <?php
+                $category = 2;
+                $ative = 1;
+                $listP = $postController->allStatusCategory($ative,$category,0,3);
+                if($listP == null):
+                    echo "Não existem posts no momento";
+                else:
+                    foreach ($listP as $post):
+            ?>
             <!-- DETAILS TAKE OUR CAUSE -->
             <div class="bx-take-on-our-cause">
                 <div class="thumb">
-                    <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
+                    <img src="./upload/<?= $post->thumb; ?>" alt="">
                 </div>
                 <div class="description">
-                    <h2>DONATE FOR WATER</h2>
-                    <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                    <h2><?= $post->title; ?></h2>
+                    <p><?= $helper->limitarTexto($post->resume, 150); ?></p>
                 </div>
                 <div class="box-reade-more">
                     <div class="bx-reade-more">
-                        <a href="<?= HOME; ?>/causa" class="btn-reade-more">Doar agora</a>
+                        <a href="<?= HOME; ?>/causa/<?= $post->url; ?>" class="btn-reade-more">Saiba Mais</a>
                     </div>
                 </div>
             </div>
             <!-- END DETAILS TAKE OUR CAUSE -->
-
-            <!-- DETAILS TAKE OUR CAUSE -->
-            <div class="bx-take-on-our-cause">
-                <div class="thumb">
-                    <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                </div>
-                <div class="description">
-                    <h2>DONATE FOR WATER</h2>
-                    <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor.</p>
-                </div>
-                <div class="box-reade-more">
-                    <div class="bx-reade-more">
-                        <a href="<?= HOME; ?>/causa" class="btn-reade-more">Doar agora</a>
-                    </div>
-                </div>
-            </div>
-            <!-- END DETAILS TAKE OUR CAUSE -->
-
-            <!-- DETAILS TAKE OUR CAUSE -->
-            <div class="bx-take-on-our-cause">
-                <div class="thumb">
-                    <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                </div>
-                <div class="description">
-                    <h2>DONATE FOR WATER</h2>
-                    <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor.</p>
-                </div>
-                <div class="box-reade-more">
-                    <div class="bx-reade-more">
-                        <a href="<?= HOME; ?>/causa" class="btn-reade-more">Doar agora</a>
-                    </div>
-                </div>
-            </div>
-            <!-- END DETAILS TAKE OUR CAUSE -->
-
-            <!-- DETAILS TAKE OUR CAUSE -->
-            <div class="bx-take-on-our-cause">
-                <div class="thumb">
-                    <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                </div>
-                <div class="description">
-                    <h2>DONATE FOR WATER</h2>
-                    <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor.</p>
-                </div>
-                <div class="box-reade-more">
-                    <div class="bx-reade-more">
-                        <a href="<?= HOME; ?>/causa" class="btn-reade-more">Doar agora</a>
-                    </div>
-                </div>
-            </div>
-            <!-- END DETAILS TAKE OUR CAUSE -->
+            <?php
+                    endforeach;
+                endif;
+            ?>
         </article>
         <!-- END ARTICLE TAKE ON OUR CAUSE -->
     </section>
@@ -369,7 +327,7 @@
                     <h2>DOAR</h2>
                 </div>
                 <div class="value-donation">
-                    <p><span class="cifrao">R$</span> 25,00<br />
+                    <p><span class="cifrao">R$</span> 50,00<br />
                         <span>Mensal</span></p>
                 </div>
                 <div class="btn-donation-new">
@@ -384,7 +342,7 @@
                     <h2>DOAR</h2>
                 </div>
                 <div class="value-donation">
-                    <p><span class="cifrao">R$</span> 25,00<br />
+                    <p><span class="cifrao">R$</span> 100,00<br />
                         <span>Mensal</span></p>
                 </div>
                 <div class="btn-donation-new">
@@ -399,7 +357,7 @@
                     <h2>DOAR</h2>
                 </div>
                 <div class="value-donation">
-                    <p><span class="cifrao">R$</span> 25,00<br />
+                    <p><span class="cifrao">R$</span> 200,00<br />
                         <span>Mensal</span></p>
                 </div>
                 <div class="btn-donation-new">
@@ -413,207 +371,207 @@
     <!-- END DONATION NEW PAY -->
 
     <!-- BX GALERY -->
-    <section class="section-gallery">
-        <div class="bax-header">
-            <h1>NOSSA <small>GALERIA</small></h1>
-        </div>
+<!--    <section class="section-gallery">-->
+<!--        <div class="bax-header">-->
+<!--            <h1>NOSSA <small>GALERIA</small></h1>-->
+<!--        </div>-->
 
-        <article class="artc-gallery">
-            <div class="box-gallery">
-                <div class="box-buttomFilter">
-                    <ul class="buttomFilter">
-                        <li>
-                            <button class="btn_item ct_active" window="markeOne">
-                                CRIANÇAS
-                            </button>
-                        </li>
-                        <li>
-                            <button class="btn_item" window="markeTwo">
-                                JOVENS
-                            </button>
-                        </li>
-                        <li>
-                            <button class="btn_item" window="markeThree">
-                                ADUTOS
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+<!--        <article class="artc-gallery">-->
+<!--            <div class="box-gallery">-->
+<!--                <div class="box-buttomFilter">-->
+<!--                    <ul class="buttomFilter">-->
+<!--                        <li>-->
+<!--                            <button class="btn_item ct_active" window="markeOne">-->
+<!--                                CRIANÇAS-->
+<!--                            </button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button class="btn_item" window="markeTwo">-->
+<!--                                JOVENS-->
+<!--                            </button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button class="btn_item" window="markeThree">-->
+<!--                                ADUTOS-->
+<!--                            </button>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!---->
+<!--                <div class="window item_ gallery" window="markeOne">-->
+<!--                    <div class="box-item">-->
+<!--                        <div class="item-window one">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window two">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window three">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window four">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window five">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window six">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window seven">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window eight">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="window item_ hidden-window" window="markeTwo">-->
+<!--                    <div class="box-item gallery">-->
+<!--                        <div class="item-window one">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window two">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window three">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window four">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window five">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window six">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window seven">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window eight">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window one">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="item-window nine">-->
+<!--                            <a class="image-link" href="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" title="Academia fitOne">-->
+<!--                                <img src="--><?//= INCLUDE_PATH; ?><!--/assets/image/cases3.jpg" alt="">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </article>-->
 
-
-                <div class="window item_ gallery" window="markeOne">
-                    <div class="box-item">
-                        <div class="item-window one">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window two">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window three">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window four">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window five">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window six">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window seven">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window eight">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="window item_ hidden-window" window="markeTwo">
-                    <div class="box-item gallery">
-                        <div class="item-window one">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window two">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window three">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window four">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window five">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window six">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window seven">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window eight">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window one">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="item-window nine">
-                            <a class="image-link" href="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" title="Academia fitOne">
-                                <img src="<?= INCLUDE_PATH; ?>/assets/image/cases3.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-    </section>
+<!--    </section>-->
     <!-- END BX GALERY -->
 
     <!-- BLOG -->
@@ -624,11 +582,11 @@
         <!-- ARTICLE BLOG -->
         <article class="article-blog">
             <div class="bx-post">
-
                 <?php
-                const BLOG = 1;
-                const ATIVO = 1;
-                $listP = $postController->allStatusCategory(BLOG,ATIVO,0,3);
+                $category = 1;//BLOG
+                $ative = 1;//ATIVO
+
+                $listP = $postController->allStatusCategory($ative,$category,0,3);
                 if($listP == null):
                     echo "Não existem posts no momento";
                 else:
@@ -657,7 +615,7 @@
                                     <p>
                                         <?= $helper->limitarTexto($post->resume, 50);
                                             //$texto = html_entity_decode($post->resume);
-                                             ?>
+                                        ?>
                                     </p>
                                 </div>
                             </div>
@@ -685,17 +643,23 @@
             <!-- BX OUR PARTNERS -->
             <div class="bx-our-partners owl-carousel owl-theme">
                 <?php
-                for ($i = 0; $i <= 12; $i++):
-                    ?>
-                    <!-- OUR PARTNERS -->
-                    <div class="item our-partners">
-                        <div class="thumb-our-partners">
-                            <img src="<?= INCLUDE_PATH; ?>/assets/image/client6.png" alt="">
+                $listaS = $brandController->allStatus(1,0,30);
+                if($listaS == null):
+                    echo "Não existem posts no momento";
+                else:
+
+                    foreach ($listaS as $brand):
+                        ?>
+                        <!-- OUR PARTNERS -->
+                        <div class="item our-partners">
+                            <div class="thumb-our-partners">
+                                <img src="./upload/<?= $brand->thumb; ?>" alt="">
+                            </div>
                         </div>
-                    </div>
-                    <!-- OUR PARTNERS -->
-                    <?php
-                endfor;
+                        <!-- OUR PARTNERS -->
+                        <?php
+                    endforeach;
+                endif;
                 ?>
             </div>
             <!-- END BX OUR PARTNERS -->
