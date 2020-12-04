@@ -24,6 +24,20 @@
                         foreach ($listaS as $slider):
                     ?>
                     <li>
+                        <?php
+                            if($slider != null):
+                        ?>
+                            <a href="<?= $slider->link; ?>" target="_blank">
+                                <img src="./upload/<?= $slider->thumb; ?>" alt="<?= $slider->title; ?>" />
+                            </a>
+                            <a href="#" class="box-text-banner">
+                                <div class="header-banner">
+                                    <h1 class="title-slider"></h1>
+                                </div>
+                            </a>
+                        <?php
+                            else:
+                                ?>
                         <a href="#" target="_blank">
                             <img src="./upload/<?= $slider->thumb; ?>" alt="<?= $slider->title; ?>" />
                         </a>
@@ -32,6 +46,10 @@
                                 <h1 class="title-slider"></h1>
                             </div>
                         </a>
+                        <?php
+                            endif;
+                        ?>
+
                     </li>
                         <?php
                             endforeach;

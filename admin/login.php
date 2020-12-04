@@ -32,12 +32,12 @@ if ($btnLogar):
                     endif;
 
                     //se usuário existir, redirecionamento para pagina checkout
-                    $insertGoTo = 'index';
+                    $insertGoTo = HOME . "/index.php";
                     header("refresh:3;url={$insertGoTo}");
                     /*$resultado = "<div class='alert alert-success'>
                                     <span>Seja Bem-vindo <b>{$_SESSION["name"]}</b>, estamos redirecionando para o painel administrativo</b></span>
                                  </div>";*/
-                    echo '<span>Seja Bem-vindo <b>{$_SESSION["name"]}</b>, estamos redirecionando para o painel administrativo</b></span>';
+                    echo '<span>Seja Bem-vindo <b> '.$_SESSION["name"].'</b>, estamos redirecionando para o painel administrativo</b></span>';
                 endif;
             else:
                 echo "<span><b>Error, </b> usuario ou senha incompativeis!!!</span>";

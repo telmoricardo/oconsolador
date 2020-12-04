@@ -4,8 +4,7 @@ require_once '../ConfigAdmin.php';
 use App\Controller\UserController;
 $userController = new UserController();
 
-$AdminLevel = 8;
- if ($_SESSION['level'] < $AdminLevel ):
+ if (!$userController->isLoggedIn()):
      $insertGoTo = 'login.php';
      header("refresh:5;url={$insertGoTo}");
      session_destroy();
@@ -224,7 +223,7 @@ endif;
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= HOME; ?>/user/index" class="nav-link">
+                <a href="<?= HOME; ?>/user/index.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Lista</p>
                 </a>
@@ -682,7 +681,7 @@ endif;
           </li>
 
           <li class="nav-item">
-            <a href="<?= HOME; ?>/index&idSession=<?= $_SESSION["id"]; ?>" class="nav-link">
+            <a href="<?= HOME?>/logout" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
               <p>Sair</p>
             </a>

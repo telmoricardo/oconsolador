@@ -33,16 +33,16 @@ if (ENVIRONMENT == 'development') {
 } else {
     //PRODUÇÃO
     // CONFIGURAÇÕES DO TEMA ####################
-    define('HOME', 'https://www.cialdf.com.br');
-    define('THEME', 'cial');
+    define('HOME', 'http://oconsolador.org.br');
+    define('THEME', 'site');
     define('INCLUDE_PATH', HOME . '/themes/' . THEME);
     define('REQUIRE_PATH', 'themes/' . THEME);
 
     // CONFIGRAÇÕES DO BANCO ####################
     define('HOST', '127.0.0.1');
-    define('USER', 'cial_loja');
-    define('PASS', 'a1b2c3d4');
-    define('DBSA', 'cial_loja');
+    define('USER', 'oconsol2_novo');
+    define('PASS', 'K@rdec01');
+    define('DBSA', 'oconsol2_novo');
 }
 
 //------------------------AUTOLOAD PARA NÃO INSTANCIAR O REQUIRE EM ALGUMAS PAGINAS------------------------ //

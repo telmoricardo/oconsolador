@@ -131,4 +131,11 @@ class UserDAO extends Conn
         header('location: login.php');
     }
 
+    public function isLoggedIn() {
+        if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
+            return false;
+        }
+        return true;
+    }
+
 }

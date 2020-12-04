@@ -69,4 +69,8 @@ class UserController
     public function userLogout() {
         return $this->userDAO->userLogout();
     }
+
+    public function isLoggedIn() {
+        return $this->userDAO->isLoggedIn();
+    }
 }
