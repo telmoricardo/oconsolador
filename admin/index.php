@@ -51,6 +51,8 @@ endif;
   <link rel="stylesheet" href="<?= INCLUDE_PATH; ?>/assets/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="<?= INCLUDE_PATH; ?>/assets/css/bs-stepper.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -277,6 +279,21 @@ endif;
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="<?= HOME; ?>/brand/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lista</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-image"></i>
+                <p>Membro <i class="fas fa-angle-left right"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?= HOME; ?>/membro/index" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Lista</p>
                     </a>
@@ -810,10 +827,13 @@ endif;
 <script src="<?= INCLUDE_PATH; ?>/assets/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?= INCLUDE_PATH; ?>/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="<?= INCLUDE_PATH; ?>/assets/js/jquery.mask.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
+
 <!-- Bootstrap 4 -->
 <script src="<?= INCLUDE_PATH; ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -838,6 +858,7 @@ endif;
 <script src="<?= INCLUDE_PATH; ?>/assets/js/adminlte.js"></script>
 
 
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- <script src="<?= INCLUDE_PATH; ?>/assets/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
@@ -846,5 +867,11 @@ endif;
 <!--FUNÇÃO PARA PERSONALIZAÇÃO OS TEXTOS-->
 <script src="<?= INCLUDE_PATH; ?>/assets/js/tinymce/tinymce.min.js" type="text/javascript"></script>
 <script src="<?= INCLUDE_PATH; ?>/assets/js/tinymce_funcao.js" type="text/javascript"></script>
+<!-- BS-Stepper -->
+<script src="<?= INCLUDE_PATH; ?>/assets/js/bs-stepper.js" type="text/javascript"></script>
+<script src="<?= INCLUDE_PATH; ?>/assets/js/stepper.js" type="text/javascript"></script>
+<script src="<?= INCLUDE_PATH; ?>/assets/js/cadastro_membro.js" type="text/javascript"></script>
+<script src="<?= INCLUDE_PATH; ?>/assets/js/main.js"></script>
+
 </body>
 </html>

@@ -61,113 +61,209 @@ endif;
               <div class="card-header">
                 <h3 class="card-title">Cadastrar Usuário</h3>
               </div>
-             
-              <form method="post" >
-                <div class="card-body">
+                <form id="form">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="name">Primeiro Nome</label>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Primeiro Nome:"  />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="lastname">Último Nome</label>
-                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Sobrenome:"  />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="document">CPF</label>
-                                <input type="text" id="document" name="document" class="form-control" placeholder="000.000.000-00"  />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Telefone:<span></span></label>
-                                <input type="text"  id="telephone" name="telephone" class="form-control" placeholder="(99) 9999-9999" />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Celular:<span></span></label>
-                                <input type="text" id="cell" name="cell" class="form-control" placeholder="(99) 99999-9999" />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>E-mail: <span id="rsEmail">&nbsp;</span></label>
-                                <input type="email" id="email" name="email" class="form-control" placeholder="E-mail:"  />
-                            </div>
-                        </div>
-                    </div>
+                        <div class="col-md-12 mt-5">
+                            <div id="stepper1" class="bs-stepper">
+                                <div class="bs-stepper-header">
+                                    <div class="step" data-target="#test-l-1">
+                                        <button type="button" class="btn step-trigger">
+                                            <span class="bs-stepper-circle">1</span>
+                                            <span class="bs-stepper-label">Informações Pessoais</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="step" data-target="#test-l-2">
+                                        <button type="button" class="btn step-trigger">
+                                            <span class="bs-stepper-circle">2</span>
+                                            <span class="bs-stepper-label">Endereço</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="step" data-target="#test-l-3">
+                                        <button type="button" class="btn step-trigger">
+                                            <span class="bs-stepper-circle">3</span>
+                                            <span class="bs-stepper-label">Third step</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="bs-stepper-content">
 
-                    <div class="row">         
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Senha (Entre 5 e 11 caracteres)</label>
-                                <input type="password" id="password" class="form-control"  name="password" placeholder="Senha:" />
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                            <label>Nível: <span id="rsLevel">&nbsp;</span></label>
-                            <select class="form-control" id="level" name="level">
-                                <option value="">Nível de acesso:</option>
-                                <?php
-                                $NivelDeAcesso = getLevel();
-                                foreach ($NivelDeAcesso as $Nivel => $Desc):
-                                    if ($Nivel):
-                                        echo "<option";                                        
-                                        echo " value='{$Nivel}'>{$Desc}</option>";
-                                    endif;
-                                endforeach;
-                                ?>
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Sexo: <span id="rsSexo">&nbsp;</span></label>                        
-                                <select class="form-control" id="genre" name="genre">
-                                    <option selected disabled value="">Gênero:</option>
-                                    <option value="1">Masculino</option>
-                                    <option value="2">Feminino</option>
-                                </select> 
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label>Status: <span id="rsStatus">&nbsp;</span></label>
-                            <select class="form-control" id="status" name="status">
-                                <option selected disabled value="">Status:</option>
-                                <option value="1">Ativo</option>
-                                <option value="2">Bloqueado</option>
-                            </select>
-                        </div>
-                    </div>
+                                    <div id="test-l-1" class="content">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                        <label for="name">Nome Completo</label>
+                                                        <input type="text" id="name" name="name" class="form-control" placeholder="Primeiro Nome:"  />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="document">CPF</label>
+                                                        <input type="text" id="cpfCnpjDevedor" name="cpf" class="form-control" placeholder="000.000.000-00"  />
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputFile">Imagem de Perfil</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                    <input type="file" id="myfile" name="myfile">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="document">RG</label>
+                                                        <input type="text" id="rg" name="rg" class="form-control" placeholder="0000000000"  />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="name">Data Nascimento</label>
+                                                        <input type="date" id="dt_nascimento" name="name" class="form-control" placeholder="Data Nascimento"  />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="document">Estado Civil</label>
+                                                        <select class="form-control" id="estado_civil" name="estado_civil">
+                                                            <option selected disabled value="">Selecione:</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="document">Sexo</label>
+                                                        <label>Sexo: <span id="rsSexo">&nbsp;</span></label>
+                                                        <select class="form-control" id="genre" name="genre">
+                                                            <option selected disabled value="">Gênero:</option>
+                                                            <option value="1">Masculino</option>
+                                                            <option value="2">Feminino</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Nome da mãe:<span></span></label>
+                                                        <input type="text" id="telephone" name="telephone" class="form-control" placeholder="nome da mãe" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Nome do pai:<span></span></label>
+                                                        <input type="text" id="" name="cell" class="form-control" placeholder="nome do pai" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="celular">Celular*</label>
+                                                        <input type="text" id="celular" class="form-control" name="celular" placeholder="(00) 00000-0000" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="telefone">Telefone</label>
+                                                        <input type="text" id="telefone" class="form-control" name="telefone" placeholder="(00) 0000-0000" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Escolaridade: <span id="escolaridade">&nbsp;</span></label>
+                                                    <select class="form-control" id="escolaridade" name="escolaridade">
+                                                        <option selected disabled value="">Escolaridade:</option>
+                                                        <option value="1">Ativo</option>
+                                                        <option value="2">Bloqueado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputFile">Imagem de Perfil</label>
+                                                        <div class="input-group">
+                                                            <div class="custom-file">
+                                                                <input type="file" id="myfile" name="myfile">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button class="btn btn-primary" onclick="stepper1.next()">Continuar</button>
+                                        </div>
+                                    </div>
+
+                                    <div id="test-l-2" class="content">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="name">Cep</label>
+                                                    <input type="text" id="cep" name="cep" class="form-control" placeholder="cep:"  />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label for="document">Logradouro</label>
+                                                    <input type="text" id="logradouro" name="logradouro" class="form-control" placeholder="logradouro"  />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Bairro</label>
+                                                    <input type="text" id="bairro" name="bairro" class="form-control" placeholder="bairro:"  />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="document">Nº</label>
+                                                    <input type="text" id="bairro" name="bairro" class="form-control" placeholder="bairro:"  />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="name">Complemento</label>
+                                                    <input type="text" id="complemento" name="complemento" class="form-control" placeholder="complemento:"  />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Estado</label>
+                                                    <select name="estados" id="estados" class="form-control">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Município</label>
+                                                    <select name="cidades" id="cidades" class="form-control">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" onclick="stepper1.next()">Continuar</button>
+                                        <button class="btn btn-primary" onclick="stepper1.previous()">Voltar</button>
+                                    </div>
+
+                                    <div id="test-l-3" class="content">
+                                        <p class="text-center">test 3</p>
+                                        <button class="btn btn-primary" onclick="stepper1.next()">Next</button>
+                                        <button class="btn btn-primary" onclick="stepper1.previous()">Previous</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <input type="submit" class="btn btn-success" name="btnEnviar" value="Enviar">
-                </div>
-              </form>
+                </form>
             </div>
           </div>          
-        </div>    
+        </div>
     </div>
 </section>
