@@ -20,7 +20,7 @@ require_once 'vendor/autoload.php';
 
 if (ENVIRONMENT == 'development') {
     // CONFIGURAÇÕES DO TEMA ####################
-    define('HOME', 'http://localhost/consolador');
+    define('HOME', 'http://localhost/oconsolador');
     define('THEME', 'site');
     define('INCLUDE_PATH', HOME . '/themes/' . THEME);
     define('REQUIRE_PATH', 'themes/' . THEME);

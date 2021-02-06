@@ -19,7 +19,7 @@ if (ENVIRONMENT == 'development') {
     // DEFINE A BASE DO SITE ####################
     //PRODUÇÃO
     // CONFIGURAÇÕES DO TEMA ####################
-    define('HOME', 'http://localhost/consolador/admin');
+    define('HOME', 'http://localhost/oconsolador/admin');
     define('THEME', 'admin');
     define('INCLUDE_PATH', HOME . '/themes/' . THEME);
     define('REQUIRE_PATH', 'themes/' . THEME);

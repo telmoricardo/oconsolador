@@ -123,4 +123,22 @@ class PostDAO extends Conn
         }
     }
 
+    //conta as quantidades de listas
+    public function countPostsStatus($status) {
+        try {
+            $model = new Post();
+            $query = "SELECT * FROM posts WHERE status = ?";
+            $arrayParams = array($status);
+            $model::SQLGeneric($query,$arrayParams,true);
+            $pkCount = ($model::getResult() != null) ? count($model::getResult()) : 0;
+            return $total = $pkCount;
+        } catch (PDOException $e) {
+            if ($this->debug):
+                echo "Erro {$e->getMessage()}, LINE {$e->getLine()}";
+            else:
+                return null;
+            endif;
+        }
+    }
+
 }

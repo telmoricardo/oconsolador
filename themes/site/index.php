@@ -208,8 +208,7 @@
     <section class="section-take-on-our-cause">
         <div class="bax-header">
             <h1>NOSSAS <small>CAUSAS</small></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et magna aliqua.</p>
+            <p> Trabalhos sociais, serviços, projetos e benefícios que executamos na comunidade do Sol Nascente.</p>
         </div>
 
         <!-- ARTICLE TAKE ON OUR CAUSE -->
@@ -596,6 +595,7 @@
     <section class="section-blog">
         <div class="bax-header">
             <h1>ÚLTIMAS DO <small>BLOG</small></h1>
+            <p>Notícias, eventos, artigos e informações</p>
         </div>
         <!-- ARTICLE BLOG -->
         <article class="article-blog">
@@ -700,7 +700,7 @@
 
         <!-- BTN READER MORE -->
         <div class="bx-btn-reader-more">
-            <a href="" class="btn-reader-more">Saiba Mais</a>
+            <a href="https://benfeitoria.com/crecheleondenis?fbclid=IwAR1NX8y14Nydgwiydhd77fC78r2N0gaT_w6z9QUzEe6C5KsPnSm0RwNP6uo" target="_blank" class="btn-reader-more">Saiba Mais</a>
         </div>
         <!-- END BTN READER MORE -->
     </section>

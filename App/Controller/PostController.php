@@ -64,5 +64,9 @@ class PostController
         return $this->postDAO->allStatusCategory($status,$category,$inicio, $quantidade);
     }
 
+    public function countPostsStatus($status) {
+        return $this->postDAO->countPostsStatus($status);
+    }
+
 
 }

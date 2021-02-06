@@ -1,8 +1,7 @@
-<Location public_html/admin/user>
+<Location public_html/admin>
 RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1
 Allow from all
 </Location>
-

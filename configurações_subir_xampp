@@ -1,8 +1,0 @@
-1º QUANDO FOR SUBIR O XAMPP TEM DISABLED APACHE2 E MYSQL
--- sudo /etc/init.d/apache2 stop
-
-2º DESABILITE O MYSQL ESTA INSTALADO
--- sudo systemctl stop mysql
-
-3º SUBIR O XAMPP
--- sudo /opt/lampp/manager-linux-x64.run

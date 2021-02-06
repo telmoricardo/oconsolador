@@ -223,7 +223,7 @@ endif;
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= HOME; ?>/user/index.php" class="nav-link">
+                <a href="<?= HOME; ?>/user/index" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Lista</p>
                 </a>
