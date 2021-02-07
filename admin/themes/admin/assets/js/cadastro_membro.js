@@ -3,14 +3,15 @@ $(document).ready(function() {
     $("#telefone").mask("(99) 9999-9999");
     $("#cpfCnpjDevedor").mask("999.999.999-99");
 
-    //getEstados();
     carregarEstadosMunicipios();
 
-
+    $("#form").submit(function(e){
+        return false;
+    });
 });
 
 $('#cpfCnpjDevedor' ).change(function() {
-    // clearMsgAlerta();
+    //clearMsgAlerta();
     var cpfCnpjDevedor = $('#cpfCnpjDevedor').val().trim();
 
     if (cpfCnpjDevedor.length > 13){
@@ -22,7 +23,7 @@ $('#cpfCnpjDevedor' ).change(function() {
         alert('CPF/CNPJ inválido.');
         $('#cpfCnpjDevedor').val('');
     }
-    alert(cpfCnpjDevedor);
+    //alert(cpfCnpjDevedor);
 });
 
 $('#cep').change(function() {
@@ -31,3 +32,30 @@ $('#cep').change(function() {
       viaCep(cep);      
     }
 });
+
+$('#gravar').click(function () {
+    var pathname = 'admin/themes/admin/ajax/cadastro_familia.php';
+    var url = "http://localhost/oconsolador/";
+    //var url = 'https://www.cialdf.com.br/';
+    var page = url + pathname;
+
+    console.log(page);
+
+    var dados = $('#form').serialize();
+
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: page,
+        async: true,
+        data: dados
+    }).done(function (result) {
+        setTimeout(function() {
+            alert(result);
+            window.location.href = url + "admin/membro/create";
+        }, 5000);
+    });
+
+    return false;
+
+})

@@ -68,7 +68,16 @@ class Helper {
         }
     }
 
-    public function limpaTelefone($valor) {
+    public static function limpaCPFCNPJ($valor) {
+        $valor = trim($valor);
+        $valor = str_replace(".", "", $valor);
+        $valor = str_replace(",", "", $valor);
+        $valor = str_replace("-", "", $valor);
+        $valor = str_replace("/", "", $valor);
+        return $valor;
+    }
+
+    public static function limpaTelefone($valor) {
         $valor = trim($valor);
         $valor = str_replace("(", "", $valor);
         $valor = str_replace(")", "", $valor);

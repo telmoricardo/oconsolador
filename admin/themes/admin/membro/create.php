@@ -14,46 +14,9 @@
         </div>
     </div>
 </section>
-<?php
-$userController = new \App\Controller\UserController();
-$resultado = "";
-$btnEnviar = filter_input(INPUT_POST, 'btnEnviar', FILTER_SANITIZE_STRING);
-if ($btnEnviar):
-    $registration = date("Y-m-d H:i:s");
-    $usuario = array(
-        'name' => filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING),
-        'lastname' => filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING),
-        'document' => filter_input(INPUT_POST, 'document', FILTER_SANITIZE_STRING),
-        'telephone' => filter_input(INPUT_POST, 'telephone', FILTER_SANITIZE_STRING),
-        'cell' => filter_input(INPUT_POST, 'cell', FILTER_SANITIZE_STRING),
-        'email' => filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING),
-        'password' => password_hash(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING), CRYPT_BLOWFISH, ['cost' => 12]),
-        'level' => filter_input(INPUT_POST, 'level', FILTER_SANITIZE_NUMBER_INT),
-        'genre' => filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_NUMBER_INT),
-        'status' => filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT),
-        'registration' => $registration
-    );
 
-   if($userController->Cadastrar($usuario)):
-       $resultado = '<div class="trigger trigger-infor">
-                        <p><b class="trigger-accept-bold">Sucesso:</b> Usuário Cadastrado com sucesso!</p>
-                      </div>';
-       $insertGoTo = HOME."/user/index";
-       header("refresh:2;url={$insertGoTo}");
-   else:
-       $resultado = '<div class="trigger trigger-error">
-                        <p><b class="trigger-accept-bold">Error:</b> Favor preencha os campos que possuem *!</p>
-                      </div>';
-   endif;
-endif;
-?>
 <section class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <?= $resultado; ?>
-            </div>
-        </div>
         <div class="row">         
             <div class="col-md-12">
             
@@ -61,7 +24,7 @@ endif;
               <div class="card-header">
                 <h3 class="card-title">Cadastrar Usuário</h3>
               </div>
-                <form id="form">
+                <form id="form" method="post">
                     <div class="row">
                         <div class="col-md-12 mt-5">
                             <div id="stepper1" class="bs-stepper">
@@ -96,7 +59,7 @@ endif;
                                                 <div class="col-md-8">
                                                     <div class="form-group">
                                                         <label for="name">Nome Completo</label>
-                                                        <input type="text" id="name" name="name" class="form-control" placeholder="Primeiro Nome:"  />
+                                                        <input type="text" id="nome_completo" name="nome_completo" class="form-control" placeholder="Primeiro Nome:"  />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
@@ -117,7 +80,7 @@ endif;
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="name">Data Nascimento</label>
-                                                        <input type="date" id="dt_nascimento" name="name" class="form-control" placeholder="Data Nascimento"  />
+                                                        <input type="date" id="dt_nascimento" name="dt_nascimento" class="form-control" placeholder="Data Nascimento"  />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -172,13 +135,13 @@ endif;
                                                 <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label>Nome da mãe:<span></span></label>
-                                                        <input type="text" id="telephone" name="telephone" class="form-control" placeholder="nome da mãe" />
+                                                        <input type="text" id="filiacao_materna" name="filiacao_materna" class="form-control" placeholder="nome da mãe" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label>Nome do pai:<span></span></label>
-                                                        <input type="text" id="" name="cell" class="form-control" placeholder="nome do pai" />
+                                                        <input type="text" id="filiacao_paterna" name="filiacao_paterna" class="form-control" placeholder="nome do pai" />
                                                     </div>
                                                 </div>
                                             </div>                                          
@@ -382,7 +345,7 @@ endif;
                                             </div>
                                         </div>
 
-                                        <button class="btn btn-primary" onclick="stepper1.next()">Continuar</button>
+                                        <input type="submit" id="gravar" class="btn btn-success" name="btnEnviar" value="Gravar">
                                         <button class="btn btn-warning" onclick="stepper1.previous()">Voltar</button>
                                     </div>
                                 </div>
@@ -395,3 +358,4 @@ endif;
         </div>
     </div>
 </section>
+
