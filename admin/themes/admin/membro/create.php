@@ -124,20 +124,33 @@ endif;
                                                     <div class="form-group">
                                                         <label for="document">Estado Civil</label>
                                                         <select class="form-control" id="estado_civil" name="estado_civil">
-                                                            <option selected disabled value="">Selecione:</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+                                                            <option>Selecione:</option>
+                                                            <?php
+                                                                $estadoCivilENUM = EstadoCivilENUM();
+                                                                foreach ($estadoCivilENUM as $statusCivil => $desc):
+                                                                    if ($statusCivil):
+                                                                        echo "<option";
+                                                                        echo " value='{$statusCivil}'>{$desc}</option>";
+                                                                    endif;
+                                                                endforeach;
+                                                            ?>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="document">Sexo</label>
-                                                        <label>Sexo: <span id="rsSexo">&nbsp;</span></label>
-                                                        <select class="form-control" id="genre" name="genre">
-                                                            <option selected disabled value="">Gênero:</option>
-                                                            <option value="1">Masculino</option>
-                                                            <option value="2">Feminino</option>
+                                                        <label for="sexo">Sexo</label>
+                                                        <select class="form-control" id="sexo" name="sexo">
+                                                            <option >Gênero:</option>
+                                                            <?php
+                                                            $sexoEnum = SexoENUM();
+                                                            foreach ($sexoEnum as $sexo => $desc):
+                                                                if ($sexo):
+                                                                    echo "<option";
+                                                                    echo " value='{$sexo}'>{$desc}</option>";
+                                                                endif;
+                                                            endforeach;
+                                                            ?>
                                                         </select>
                                                     </div>
                                                 </div>

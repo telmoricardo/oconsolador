@@ -20,30 +20,34 @@ function getLevel($Level = null) {
     endif;
 }
 
-// NÍVEL DE PAGAMENTO ####################################################
-function getPayment($Payment = null) {
-    $PaymentLevel = [
-        1 => 'Aguardando pagamento',
-        2 => 'Pago'       
+// ESTADO CIVIL ENUM ####################################################
+function EstadoCivilENUM($estadoCivil = null) {
+    $maritalStatus = [
+        SOLTEIRO => 'Solteiro(a)',
+        CASADO => 'Casado(a)',
+        DIVORCIADO => 'Divorciado(a)',
+        VIUVO => 'Viúvo(a)',
+        SEPARADO => 'Separado(a)'
     ];
-    if (!empty($Payment)):
-        return $PaymentLevel[$Payment];
+    if (!empty($estadoCivil)):
+        return $maritalStatus[$estadoCivil];
     else:
-        return $PaymentLevel;
+        return $maritalStatus;
     endif;
 }
 
-// NÍVEL DE ENDEREÇO ####################################################
-function getAddress($Address = null) {
-    $AddressLevel = [
-        1 => 'Aguardando pagamento',
-        2 => 'Encomenda'       
+// SEXO ENUM ####################################################
+function SexoENUM($sexo = null) {
+    $sexoEnum = [
+        MASCULINO => 'Masculino',
+        FEMININO => 'Feminino'
     ];
-    if (!empty($Address)):
-        return $AddressLevel[$Address];
+    if (!empty($sexo)):
+        return $sexoEnum[$sexo];
     else:
-        return $AddressLevel;
+        return $sexoEnum;
     endif;
 }
 
 ?>
+
