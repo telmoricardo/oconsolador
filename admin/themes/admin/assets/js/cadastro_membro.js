@@ -3,7 +3,8 @@ $(document).ready(function() {
     $("#telefone").mask("(99) 9999-9999");
     $("#cpfCnpjDevedor").mask("999.999.999-99");
 
-    carregarEstadoMunicipio();
+    //getEstados();
+    carregarEstadosMunicipios();
 
 
 });
@@ -24,11 +25,9 @@ $('#cpfCnpjDevedor' ).change(function() {
     alert(cpfCnpjDevedor);
 });
 
-$('#cep' ).change(function() {
-
+$('#cep').change(function() {
     var cep = $('#cep').val();
     if (cep != null){
-      viaCep(cep);
+      viaCep(cep);      
     }
-
 });

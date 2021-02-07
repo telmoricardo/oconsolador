@@ -1,3 +1,5 @@
+var url = '../../admin/themes/admin/assets/dados/estados_cidades.json';
+
 function validarCPF(cpf) {
     cpf = cpf.replace(/[^\d]+/g,'');
     if(cpf == '') return false;
@@ -52,8 +54,8 @@ function viaCep(valor) {
             //Preenche os campos com "..." enquanto consulta webservice.
             $("#logradouro").val("...");
             $("#bairro").val("...");
-            $("#cidade").val("...");
-            $("#estados").val("...");
+            $("#cidades").val("...");
+            $("#estados").val("...");          
 
 
             //Consulta o webservice viacep.com.br/
@@ -64,8 +66,14 @@ function viaCep(valor) {
                     console.log(dados);
                     $("#logradouro").val(dados.logradouro);
                     $("#bairro").val(dados.bairro);
-                    $("#cidade").val(dados.localidade);
-                    $("#estados").val(dados.uf);
+                    $("#cidades").val(dados.localidade);
+                    $("#estados").val(dados.uf);  
+                    
+                    var sigla = dados.uf;
+                    if(sigla){
+                        carregarCidades(sigla);
+                    }
+                   
 
                 } //end if.
                 else {
@@ -87,12 +95,11 @@ function viaCep(valor) {
     }
 }
 
-function carregarEstadoMunicipio(){
+function carregarEstadosMunicipios(){
     var selectEstados = $('#estados'),
         selectCidades = $('#cidades');
     $('.cidade-select').hide();
-
-    var url = 'https://gist.githubusercontent.com/letanure/3012978/raw/36fc21d9e2fc45c078e0e0e07cce3c81965db8f9/estados-cidades.json';
+    
     $.getJSON(url, function(data){
         var options = "<option value=''>Selecione um estado</option>";
         $.each(data.estados, function(key, val){
@@ -112,3 +119,18 @@ function carregarEstadoMunicipio(){
         });
     });
 }
+
+function carregarCidades(sigla){
+    var selectCidades = $('#cidades');    
+    $.getJSON(url, function(data){
+        var estado = data.estados.find(function(estado){
+            return sigla === estado.sigla;
+        })
+        var options = "<option value=''>Selecione uma cidade</option>";
+        $.each(estado.cidades, function(key, val){
+            options += "<option value='" + val + "'> " + val + "</option>";
+        });
+        selectCidades.html(options);
+    });
+}
+

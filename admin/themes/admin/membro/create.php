@@ -83,38 +83,38 @@ endif;
                                     <div class="step" data-target="#test-l-3">
                                         <button type="button" class="btn step-trigger">
                                             <span class="bs-stepper-circle">3</span>
-                                            <span class="bs-stepper-label">Third step</span>
+                                            <span class="bs-stepper-label">Informações Adicionais</span>
                                         </button>
                                     </div>
+                                    
                                 </div>
                                 <div class="bs-stepper-content">
 
                                     <div id="test-l-1" class="content">
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-8">
                                                     <div class="form-group">
                                                         <label for="name">Nome Completo</label>
                                                         <input type="text" id="name" name="name" class="form-control" placeholder="Primeiro Nome:"  />
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="document">CPF</label>
                                                         <input type="text" id="cpfCnpjDevedor" name="cpf" class="form-control" placeholder="000.000.000-00"  />
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="document">RG</label>
                                                         <input type="text" id="rg" name="rg" class="form-control" placeholder="0000000000"  />
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="col-md-3">
+                                            <div class="row">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="name">Data Nascimento</label>
                                                         <input type="date" id="dt_nascimento" name="name" class="form-control" placeholder="Data Nascimento"  />
@@ -141,46 +141,34 @@ endif;
                                                         </select>
                                                     </div>
                                                 </div>
-
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Nome da mãe:<span></span></label>
-                                                        <input type="text" id="telephone" name="telephone" class="form-control" placeholder="nome da mãe" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Nome do pai:<span></span></label>
-                                                        <input type="text" id="" name="cell" class="form-control" placeholder="nome do pai" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="celular">Celular*</label>
                                                         <input type="text" id="celular" class="form-control" name="celular" placeholder="(00) 00000-0000" />
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="telefone">Telefone</label>
                                                         <input type="text" id="telefone" class="form-control" name="telefone" placeholder="(00) 0000-0000" />
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-3">
-                                                    <label>Escolaridade: <span id="escolaridade">&nbsp;</span></label>
-                                                    <select class="form-control" id="escolaridade" name="escolaridade">
-                                                        <option selected disabled value="">Escolaridade:</option>
-                                                        <option value="1">Ativo</option>
-                                                        <option value="2">Bloqueado</option>
-                                                    </select>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label>Nome da mãe:<span></span></label>
+                                                        <input type="text" id="telephone" name="telephone" class="form-control" placeholder="nome da mãe" />
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label>Nome do pai:<span></span></label>
+                                                        <input type="text" id="" name="cell" class="form-control" placeholder="nome do pai" />
+                                                    </div>
+                                                </div>
+                                            </div>                                          
 
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -232,7 +220,7 @@ endif;
                                                     <label for="name">Complemento</label>
                                                     <input type="text" id="complemento" name="complemento" class="form-control" placeholder="complemento:"  />
                                                 </div>
-                                            </div>
+                                            </div>                                            
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="document">Estado</label>
@@ -249,13 +237,140 @@ endif;
                                             </div>
                                         </div>
                                         <button class="btn btn-primary" onclick="stepper1.next()">Continuar</button>
-                                        <button class="btn btn-primary" onclick="stepper1.previous()">Voltar</button>
+                                        <button class="btn btn-warning" onclick="stepper1.previous()">Voltar</button>
                                     </div>
 
                                     <div id="test-l-3" class="content">
-                                        <p class="text-center">test 3</p>
-                                        <button class="btn btn-primary" onclick="stepper1.next()">Next</button>
-                                        <button class="btn btn-primary" onclick="stepper1.previous()">Previous</button>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Escolaridade</label>
+                                                    <select name="escolaridade" id="escolaridade" class="form-control">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="name">Escola</label>
+                                                    <input type="text" id="cep" name="cep" class="form-control" placeholder="cep:"  />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Período Escolar</label>
+                                                    <select name="escolaridade" id="escolaridade" class="form-control">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Moradia </label>
+                                                    <select name="moradia_propria" id="moradia_propria" class="form-control">
+                                                        <option value="">Aluguel</option>
+                                                        <option value="">Cedia</option>
+                                                        <option value="">Própria</option>
+                                                    </select>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                        <div class="row">                                            
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Roupa</label>
+                                                    <select name="roupa" id="roupa" class="form-control">
+                                                        <option value="">GG</option>
+                                                        <option value="">G</option>
+                                                        <option value="">M</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Calçados</label>
+                                                    <input type="text" id="cep" name="cep" class="form-control" placeholder="cep:"  />
+                                                </div>
+                                            </div> 
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="document">PROBLEMA DE SAÚDE OU RESTRIÇÃO ALIMENTAR?</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>                                         
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Função</label>
+                                                    <select name="instituto" id="instituto" class="form-control">
+                                                        <option value="">Trabalhador</option>
+                                                        <option value="">Assistido</option>                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Turma</label>
+                                                    <select name="instituto" id="instituto" class="form-control">
+                                                        <option value="">Esclarecimento</option>
+                                                        <option value="">Nível II</option>                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Instituto</label>
+                                                    <select name="instituto" id="instituto" class="form-control">
+                                                        <option value="">Esclarecimento</option>
+                                                        <option value="">Infância</option>                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Trabalho</label>
+                                                    <select name="trabalho" id="trabalho" class="form-control">
+                                                        <option value="">Sim</option>
+                                                        <option value="">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Renda Mensal</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Benefício</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="document">Trabalho/Estágio</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>                                            
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Observação*: <span id="rsStatus">&nbsp;</span></label>
+                                                    <textarea rows="2" name="description" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button class="btn btn-primary" onclick="stepper1.next()">Continuar</button>
+                                        <button class="btn btn-warning" onclick="stepper1.previous()">Voltar</button>
                                     </div>
                                 </div>
                             </div>
