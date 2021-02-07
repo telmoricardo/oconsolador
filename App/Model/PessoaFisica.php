@@ -4,8 +4,8 @@ namespace App\Model;
 
 use App\DAO\Conn;
 
-class User extends Conn
+class PessoaFisica extends Conn
 {
-    protected static $Table = "users";
+    protected static $Table = "tb_pessoa_fisica";
 
 }

@@ -4,18 +4,19 @@
 namespace App\Controller;
 
 
-use App\DAO\UserDAO;
+use App\DAO\PessoaFisicaDAO;
 
-class UserController
+
+class PessoaFisicaController
 {
 
-    private $userDAO;
+    private $pessoaFisica;
     private $data;
 
 
     public function __construct()
     {
-        $this->userDAO = new UserDAO();
+        $this->pessoaFisica = new PessoaFisicaDAO();
     }
 
     public function Cadastrar($data)
@@ -23,7 +24,7 @@ class UserController
         $this->data = $data;
 
         if($this->data != null):
-            return $this->userDAO->Cadastrar($data);
+            return $this->pessoaFisica->Cadastrar($data);
         else:
             return false;
         endif;
@@ -32,7 +33,7 @@ class UserController
     }
 
     //listar usuários com limite
-    public function allUser($inicio = null, $quantidade = null) {
+    /*public function allUser($inicio = null, $quantidade = null) {
         return $this->userDAO->allUser($inicio, $quantidade);
     }
     //QUANTIDADE DE USUARIOS - METODO AUXILIAR PARA FAZER PAGINAÇÃO DE RESULTADOS
@@ -72,5 +73,5 @@ class UserController
 
     public function isLoggedIn() {
         return $this->userDAO->isLoggedIn();
-    }
+    }*/
 }

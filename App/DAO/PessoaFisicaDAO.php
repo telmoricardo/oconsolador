@@ -4,9 +4,10 @@
 namespace App\DAO;
 
 use App\DAO\Conn;
+use App\Model\PessoaFisica;
 use App\Model\User;
 
-class UserDAO extends Conn
+class PessoaFisicaDAO extends Conn
 {
 
     private $debug;
@@ -15,9 +16,9 @@ class UserDAO extends Conn
     public function Cadastrar($data){
         try {
             $this->data = $data;
-            $userModel = new User();
-            $userModel::Create($data);
-            return $userModel::getResult();
+            $model = new PessoaFisica();
+            $model::Create($data);
+            return $model::getResult();
 
         }catch (\PDOException $e){
             if($this->debug):
@@ -29,7 +30,7 @@ class UserDAO extends Conn
     }
 
     //listar usuários com limite
-    public function allUser($inicio = null, $quantidade = null) {
+    /*public function allUser($inicio = null, $quantidade = null) {
         try {
             $userModel = new User();
             $Query = "SELECT * FROM users ORDER BY id DESC LIMIT {$inicio}, {$quantidade}";
@@ -136,6 +137,6 @@ class UserDAO extends Conn
             return false;
         }
         return true;
-    }
+    }*/
 
 }
