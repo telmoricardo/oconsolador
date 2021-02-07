@@ -72,6 +72,7 @@ class Conn {
 
             if ($stmt->rowCount() == 1):
                 return self::$Result = self::getConn()->lastInsertId();
+                var_dump(self::$Result);
             endif;
         } catch (PDOException $ex) {
             die($ex->getMessage());

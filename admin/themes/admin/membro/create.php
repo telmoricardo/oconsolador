@@ -188,7 +188,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="document">Nº</label>
-                                                    <input type="text" id="bairro" name="bairro" class="form-control" placeholder="bairro:"  />
+                                                    <input type="text" id="numero" name="numero" class="form-control" placeholder="bairro:"  />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -200,14 +200,14 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="document">Estado</label>
-                                                    <select name="estados" id="estados" class="form-control">
+                                                    <select name="estado" id="estados" class="form-control">
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="document">Município</label>
-                                                    <select name="cidades" id="cidades" class="form-control">
+                                                    <select name="municipio" id="cidades" class="form-control">
                                                     </select>
                                                 </div>
                                             </div>
