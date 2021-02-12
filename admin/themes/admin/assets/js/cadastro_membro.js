@@ -52,7 +52,7 @@ $('#gravar').click(function () {
     }).done(function (result) {
         setTimeout(function() {
             alert(result);
-            //window.location.href = "http://localhost/oconsolador/admin/membro/create";
+            window.location.href = "http://localhost/oconsolador/admin/membro/create";
         }, 5000);
     });
 
