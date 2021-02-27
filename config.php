@@ -29,7 +29,7 @@ if (ENVIRONMENT == 'development') {
     define('HOST', '127.0.0.1');
     define('USER', 'root');
     define('PASS', '');
-    define('DBSA', 'consolador');
+    define('DBSA', 'oconsol2_novo');
 } else {
     //PRODUÇÃO
     // CONFIGURAÇÕES DO TEMA ####################

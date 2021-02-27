@@ -1,4 +1,11 @@
-var url = '../../admin/themes/admin/assets/dados/estados_cidades.json';
+//var url = '../../admin/themes/admin/assets/dados/estados_cidades.json';
+var pathEstado = 'admin/themes/admin/ajax/lista_estados.php';
+var urlEst = "http://localhost/oconsolador/";
+var urlEstado = urlEst + pathEstado;
+
+var pathCidade = 'admin/themes/admin/ajax/listaCidadePeloEstado.php';
+var urlCid= "http://localhost/oconsolador/";
+var urlCidade = urlCid + pathCidade;
 
 function validarCPF(cpf) {
     cpf = cpf.replace(/[^\d]+/g,'');
@@ -100,14 +107,21 @@ function carregarEstadosMunicipios(){
         selectCidades = $('#cidades');
     $('.cidade-select').hide();
     
-    $.getJSON(url, function(data){
+    $.getJSON(urlEstado, function(data){
         var options = "<option value=''>Selecione um estado</option>";
-        $.each(data.estados, function(key, val){
-            options += "<option value='" + val.sigla + "'> " + val.nome + "</option>";
+        $.each(data, function(key, val){
+            options += "<option value='" + val.id + "'> " + val.nome + "</option>";
         });
+        /*$.each(data.estados, function(key, val){
+            options += "<option value='" + val.sigla + "'> " + val.nome + "</option>";
+        });*/
         selectEstados.html(options);
+
         selectEstados.on('change', function(){
-            var estado = data.estados.find(function(estado){
+            var estado = data.find(function(estado){
+                return selectEstados.val() === estado.id;
+            })
+            /*var estado = data.estados.find(function(estado){
                 return selectEstados.val() === estado.sigla;
             })
             var options = "<option value=''>Selecione uma cidade</option>";
@@ -115,16 +129,31 @@ function carregarEstadosMunicipios(){
                 options += "<option value='" + val + "'> " + val + "</option>";
             });
             selectCidades.html(options);
-            $('.cidade-select').show();
+            $('.cidade-select').show();*/
+
+            $.getJSON(urlCidade, {
+                idEstado: $(this).val(),
+                ajax: 'true'
+            }, function(data){
+                var options = "<option value=''>Selecione uma cidade</option>";
+                $.each(data, function(key, val){
+                    options += "<option value='" + val.id + "'> " + val.nome + "</option>";
+                });
+                selectCidades.html(options);
+                $('.cidade-select').show();
+            });
         });
     });
 }
 
 function carregarCidades(sigla){
     var selectCidades = $('#cidades');    
-    $.getJSON(url, function(data){
-        var estado = data.estados.find(function(estado){
-            return sigla === estado.sigla;
+    $.getJSON(urlEstado, function(data){
+        console.log(data);
+
+        var estado = data.find(function(estado){
+            return sigla === data.uf;
+            console.log(sigla);
         })
         var options = "<option value=''>Selecione uma cidade</option>";
         $.each(estado.cidades, function(key, val){

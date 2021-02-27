@@ -49,5 +49,68 @@ function SexoENUM($sexo = null) {
     endif;
 }
 
+// PARTO ENUM ####################################################
+function PartoENUM($parto = null) {
+    $partoEnum = [
+        NORMAL => 'Normal',
+        CESARIANA => 'Cesariana',
+        FORCEPS => 'Fórceps',
+    ];
+    if (!empty($parto)):
+        return $partoEnum[$parto];
+    else:
+        return $partoEnum;
+    endif;
+}
+
+// HABITAÇÃO ENUM ####################################################
+function habitacaoENUM($habitacao = null) {
+    $habitacaoEnum = [
+        PROPRIA => 'própria',
+        CEDIDA => 'cedida',
+        ALUGADA => 'alugada',
+    ];
+    if (!empty($habitacao)):
+        return $habitacaoEnum[$habitacao];
+    else:
+        return $habitacaoEnum;
+    endif;
+}
+
+// PREMATURO ENUM ####################################################
+function PrematuroENUM($prematuro = null) {
+    $prematuroEnum = [
+        SIM => 'Sim',
+        NAO => 'Não'
+    ];
+    if (!empty($prematuro)):
+        return $prematuroEnum[$prematuro];
+    else:
+        return $prematuroEnum;
+    endif;
+}
+// MORA COM QUEM ENUM ####################################################
+function moraComQuemENUM($alguem = null) {
+    $moraEnum = [
+        PAI => 'Pai',
+        MAE => 'Mãe',
+        OUTROS => 'Outros',
+    ];
+    if (!empty($alguem)):
+        return $moraEnum[$alguem];
+    else:
+        return $moraEnum;
+    endif;
+}
+
+function arrayDoencas($array = null) {
+    if(!empty($array)):
+        $comma_separated = implode(",", $array);
+        return $comma_separated;
+    else:
+        return null;
+    endif;
+}
+
 ?>
 
